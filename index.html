@@ -320,6 +320,98 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
 @media (max-width:700px){.corr{height:380vh}.mc{width:38vw}}
 @media (prefers-reduced-motion:reduce){.corr{height:auto}.mc-sticky{position:relative;height:auto;padding:100px var(--pad);display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;perspective:none}
   .mc-title,.mc-text{position:static;transform:none;width:auto;grid-column:1/-1;margin:0 auto 20px}.mc{position:relative;left:auto;top:auto;width:auto;transform:none!important;opacity:1!important}}
+
+/* SERVICES v2: yellow tab panel */
+.sx{background:var(--volt);padding:clamp(70px,9vw,130px) 0;overflow:hidden}
+.sx .tag::before{background:var(--ink)}
+.sx-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:40px}
+.sx .lead{color:#3b3a2c}
+.sx-box{display:grid;grid-template-columns:.9fr 1.1fr;gap:16px;background:var(--ink);border-radius:28px;padding:16px;box-shadow:0 40px 80px rgba(18,18,16,.25)}
+.sx-tabs{display:grid;gap:6px;align-content:start}
+.sx-tab{position:relative;display:grid;grid-template-columns:44px 1fr;align-items:center;gap:6px;text-align:left;border:0;cursor:pointer;background:transparent;color:#cfcfc7;
+  padding:18px 18px;border-radius:16px;font:700 1.08rem/1.2 var(--body);transition:background .25s,color .25s,transform .1s ease-out;overflow:hidden}
+.sx-tab:hover{background:#1f1f1c;color:#fff}
+.sx-tab:active{transform:scale(.99)}
+.sx-tab .n{font:800 .9rem/1 var(--disp);color:#77776f;transition:color .25s}
+.sx-tab .t{font-family:var(--disp);font-stretch:112%;font-weight:800;font-size:clamp(1rem,1.5vw,1.2rem)}
+.sx-tab.on{background:#26261f;color:#fff}
+.sx-tab.on .n{color:var(--volt)}
+.sx-tab .pb{position:absolute;left:18px;right:18px;bottom:8px;height:2px;background:rgba(255,255,255,.08);border-radius:2px;opacity:0}
+.sx-tab.on .pb{opacity:1}
+.sx-tab .pb i{display:block;height:100%;background:var(--volt);transform-origin:0 50%;transform:scaleX(0)}
+.sx-panels{position:relative;min-height:540px}
+.sx-panel{position:absolute;inset:0;display:grid;grid-template-rows:1fr auto;border-radius:20px;overflow:hidden;background:#1a1a17}
+.sx-panel[hidden]{display:grid;visibility:hidden}
+.sx-img{position:relative;overflow:hidden}
+.sx-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);opacity:0;transition:transform 1.2s cubic-bezier(.16,1,.3,1),opacity .6s ease}
+.sx-panel.on .sx-img img{transform:none;opacity:1}
+.sx-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(26,26,23,.9))}
+.sx-body{padding:6px 26px 26px;color:#fff;position:relative;margin-top:-60px}
+.sx-body h3{font-family:var(--disp);font-stretch:122%;font-weight:900;font-size:clamp(1.6rem,2.8vw,2.4rem);line-height:1;letter-spacing:-.02em}
+.sx-body p{color:#d0d0c8;margin-top:10px;max-width:52ch}
+.sx-body ul{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 20px}
+.sx-body li{padding:8px 12px;border-radius:999px;background:rgba(255,210,0,.12);color:var(--volt);font-weight:600;font-size:.92rem;box-shadow:inset 0 0 0 1px rgba(255,210,0,.35)}
+.sx-body .btn-ink{background:var(--volt);color:var(--ink)}
+.sx-panel .sx-body>*{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .7s cubic-bezier(.16,1,.3,1)}
+.sx-panel.on .sx-body>*{opacity:1;transform:none}
+.sx-panel.on .sx-body>*:nth-child(2){transition-delay:.06s}.sx-panel.on .sx-body>*:nth-child(3){transition-delay:.12s}.sx-panel.on .sx-body>*:nth-child(4){transition-delay:.18s}
+@media (max-width:900px){.sx-box{grid-template-columns:1fr}.sx-tabs{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:6px;padding-bottom:4px;scrollbar-width:none}
+  .sx-tabs::-webkit-scrollbar{display:none}.sx-tab{flex:none;scroll-snap-align:start;grid-template-columns:auto auto;padding:14px 16px}.sx-panels{min-height:560px}}
+
+/* PROCESS v2: signal path */
+.process2{padding:clamp(80px,10vw,140px) 0;overflow:hidden}
+.sp-head{max-width:760px}
+.sp{position:relative;margin-top:clamp(40px,6vw,70px)}
+.sp-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
+.sp-svg .base{fill:none;stroke:rgba(255,255,255,.18);stroke-width:2}
+.sp-svg .trail{fill:none;stroke:var(--volt);stroke-width:3;stroke-linecap:round;filter:drop-shadow(0 0 6px rgba(255,210,0,.8))}
+.sp-svg .tip{fill:#fff;filter:drop-shadow(0 0 8px rgba(255,210,0,1))}
+.sp-steps{list-style:none;display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(12px,2vw,26px);position:relative;z-index:1}
+.sp-step{margin-top:calc(var(--i) * clamp(40px,5vw,70px))}
+.sp-node{position:relative;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:var(--ink);box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);
+  font:800 .85rem/1 var(--disp);color:var(--fog);transition:background .35s,color .35s,box-shadow .35s;margin-bottom:16px}
+.sp-node .ring{position:absolute;inset:-2px;border-radius:50%;box-shadow:0 0 0 2px var(--volt);opacity:0}
+.sp-step.lit .sp-node{background:var(--volt);color:var(--ink);box-shadow:0 0 0 6px rgba(255,210,0,.15),0 0 26px rgba(255,210,0,.5)}
+.sp-step.arrive .sp-node .ring{animation:arrive .9s ease-out}
+@keyframes arrive{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(2.1)}}
+.sp-card{border-radius:18px;overflow:hidden;background:#1c1c19;box-shadow:inset 0 0 0 1px rgba(255,255,255,.07);transition:box-shadow .35s,transform .35s cubic-bezier(.2,.8,.2,1)}
+.sp-step.lit .sp-card{box-shadow:inset 0 0 0 1px rgba(255,210,0,.45),0 20px 50px rgba(0,0,0,.4)}
+.sp-card:hover{transform:translateY(-4px)}
+.sp-img{position:relative;aspect-ratio:4/3;overflow:hidden}
+.sp-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.85) brightness(.7);transition:filter .5s,transform .8s cubic-bezier(.16,1,.3,1)}
+.sp-step.lit .sp-img img{filter:none}
+.sp-card:hover .sp-img img{transform:scale(1.06)}
+.sp-detail{position:absolute;inset:auto 0 0;padding:16px;font-size:.92rem;line-height:1.45;color:#fff;background:linear-gradient(180deg,transparent,rgba(0,0,0,.85) 35%);
+  transform:translateY(100%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.sp-card:hover .sp-detail,.sp-card:focus-within .sp-detail{transform:none}
+.sp-card h3{font-family:var(--disp);font-stretch:112%;font-weight:800;font-size:1.05rem;line-height:1.15;padding:16px 16px 18px}
+@media (max-width:980px){.sp-steps{grid-template-columns:1fr;gap:26px;padding-left:64px}.sp-step{margin-top:0;position:relative}
+  .sp-node{position:absolute;left:-64px;top:0}.sp-detail{position:static;transform:none;background:none;padding:12px 16px 0;color:#cfcfc7}
+  .sp-img{aspect-ratio:16/9}.sp-card h3{padding-top:8px}}
+@media (prefers-reduced-motion:reduce){.sp-step .sp-node{background:var(--volt);color:var(--ink)}.sp-img img{filter:none}}
+
+/* COMMITMENTS v2: throwable deck */
+.commit2{padding:clamp(80px,10vw,140px) 0;overflow:hidden}
+.cm2-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(30px,5vw,80px);align-items:center}
+.dk-ctrl{display:flex;align-items:center;gap:14px;margin-top:28px}
+.dk-btn{width:54px;height:54px;border-radius:50%;border:0;cursor:pointer;background:var(--ink);color:#fff;display:grid;place-items:center;transition:transform .1s ease-out,background .2s}
+.dk-btn:hover{background:#2a2a26}.dk-btn:active{transform:scale(.93)}
+.dk-btn svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2.2}
+.dk-count{font:800 1rem/1 var(--disp);font-variant-numeric:tabular-nums;min-width:76px;text-align:center}
+.deck{position:relative;height:clamp(360px,42vw,440px);touch-action:pan-y;outline:none;user-select:none;-webkit-user-select:none}
+.deck:focus-visible .dk-card.top{box-shadow:0 0 0 3px var(--ink),0 30px 60px rgba(18,18,16,.25)}
+.dk-card{position:absolute;inset:0;margin:auto;width:min(100%,460px);height:100%;border-radius:28px;padding:clamp(26px,3.5vw,40px);display:flex;flex-direction:column;justify-content:flex-end;
+  box-shadow:0 24px 50px rgba(18,18,16,.18);will-change:transform;cursor:grab;transform-origin:50% 90%}
+.dk-card:active{cursor:grabbing}
+.dk-card.y{background:var(--volt);color:var(--ink)}
+.dk-card.k{background:var(--ink);color:#fff}
+.dk-card.w{background:#fff;color:var(--ink)}
+.dk-card svg{position:absolute;top:clamp(26px,3.5vw,40px);left:clamp(26px,3.5vw,40px);width:56px;height:56px;padding:12px;border-radius:16px}
+.dk-card.y svg{background:var(--ink);fill:var(--volt)}.dk-card.k svg{background:var(--volt);fill:var(--ink)}.dk-card.w svg{background:var(--volt);fill:var(--ink)}
+.dk-n{position:absolute;top:clamp(30px,3.8vw,46px);right:clamp(26px,3.5vw,40px);font:800 .9rem/1 var(--disp);opacity:.6}
+.dk-card h3{font-family:var(--disp);font-stretch:122%;font-weight:900;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1;letter-spacing:-.02em;max-width:12ch}
+.dk-card p{margin-top:14px;font-size:1.1rem;max-width:30ch;opacity:.85}
+@media (max-width:860px){.cm2-grid{grid-template-columns:1fr}.deck{order:2}}
 </style>
 </head>
 <body>
@@ -401,43 +493,33 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
 </section>
 
 <!-- SERVICES -->
-<section class="services paperbg" id="servicios">
+<section class="sx" id="servicios">
   <div class="wrap">
-    <div class="sv-head rv2">
+    <div class="sx-head rv2">
       <div><p class="tag">Servicios</p><h2 class="h2">Un mismo equipo para toda la parte eléctrica.</h2></div>
-      <p class="lead">De la avería que para una línea de producción al proyecto completo de una nave. Lo hacemos nosotros, de principio a fin.</p>
+      <p class="lead">De la avería que para una línea de producción al proyecto completo de una nave. Toca cada servicio para verlo.</p>
     </div>
-    <div class="sv-grid">
-      <article class="sv rv2" tabindex="0">
-        <svg class="ic" viewBox="0 0 54 54"><path d="M30 6 14 30h12l-4 18 18-26H28z" class="acc"/><circle cx="40" cy="40" r="8"/><path d="M46 46l5 5"/></svg>
-        <h3>Reparaciones industriales</h3>
-        <p>Averías en maquinaria, cuadros y líneas de fábricas y naves. Localizamos el fallo y lo dejamos funcionando cuanto antes.</p>
-      </article>
-      <article class="sv rv2" tabindex="0">
-        <svg class="ic" viewBox="0 0 54 54"><circle cx="27" cy="27" r="19"/><path d="M27 15v12l8 5" class="acc"/><path d="M27 4v4M27 46v4M4 27h4M46 27h4"/></svg>
-        <h3>Mantenimiento industrial</h3>
-        <p>Revisiones periódicas y mantenimiento preventivo y correctivo para que tu instalación no te dé sustos.</p>
-      </article>
-      <article class="sv rv2" tabindex="0">
-        <svg class="ic" viewBox="0 0 54 54"><path d="M6 48V22L27 8l21 14v26z"/><path d="M18 48V32h18v16" class="acc"/><path d="M27 20v6"/></svg>
-        <h3>Reformas integrales</h3>
-        <p>Toda la instalación eléctrica nueva o renovada en naves, locales comerciales y oficinas.</p>
-      </article>
-      <article class="sv rv2" tabindex="0">
-        <svg class="ic" viewBox="0 0 54 54"><path d="M8 14h38l-6 12H14z"/><path d="M16 32l-4 8M27 32v10M38 32l4 8" class="acc"/></svg>
-        <h3>Iluminación LED</h3>
-        <p>Cambio a LED en naves y espacios de trabajo: más luz, menos consumo y menos mantenimiento.</p>
-      </article>
-      <article class="sv rv2" tabindex="0">
-        <svg class="ic" viewBox="0 0 54 54"><path d="M27 6a13 13 0 00-8 23c2 2 3 4 3 7h10c0-3 1-5 3-7a13 13 0 00-8-23z"/><path d="M22 42h10M24 48h6" class="acc"/></svg>
-        <h3>Iluminación decorativa</h3>
-        <p>Diseño e instalación de iluminación para locales, fachadas y espacios que tienen que lucir.</p>
-      </article>
-      <article class="sv rv2" tabindex="0">
-        <svg class="ic" viewBox="0 0 54 54"><path d="M12 4h22l10 10v36H12z"/><path d="M34 4v10h10"/><path d="M19 26h18M19 33h18M19 40h11" class="acc"/></svg>
-        <h3>Boletines y proyectos eléctricos</h3>
-        <p>Boletines, legalizaciones y proyectos técnicos para dar de alta, ampliar o regularizar tu instalación.</p>
-      </article>
+    <div class="sx-box rv2">
+      <div class="sx-tabs" role="tablist" aria-label="Servicios"><button type="button" role="tab" class="sx-tab on" aria-selected="true" data-i="0"><span class="n">01</span><span class="t">Reparaciones industriales</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="1"><span class="n">02</span><span class="t">Mantenimiento industrial</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="2"><span class="n">03</span><span class="t">Reformas integrales</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="3"><span class="n">04</span><span class="t">Iluminación LED</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="4"><span class="n">05</span><span class="t">Iluminación decorativa</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="5"><span class="n">06</span><span class="t">Boletines y proyectos</span><span class="pb"><i></i></span></button></div>
+      <div class="sx-panels"><article class="sx-panel on" data-i="0" role="tabpanel" >
+          <div class="sx-img"><img src="https://images.unsplash.com/photo-1758101755915-462eddc23f57?w=1000&q=75&auto=format&fit=crop" alt="Reparaciones industriales" loading="lazy"></div>
+          <div class="sx-body"><h3>Reparaciones industriales</h3><p>Averías en maquinaria, cuadros y líneas de fábricas y naves. Localizamos el fallo y lo dejamos funcionando cuanto antes.</p><ul><li>Diagnóstico de averías en maquinaria y cuadros</li><li>Reparación de líneas de fuerza y control</li><li>Prioridad: que la producción vuelva a arrancar</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sx-panel" data-i="1" role="tabpanel" hidden>
+          <div class="sx-img"><img src="https://images.unsplash.com/photo-1660330589693-99889d60181e?w=1000&q=75&auto=format&fit=crop" alt="Mantenimiento industrial" loading="lazy"></div>
+          <div class="sx-body"><h3>Mantenimiento industrial</h3><p>Revisiones periódicas y mantenimiento preventivo y correctivo para que la instalación no te dé sustos.</p><ul><li>Revisiones con la frecuencia que necesites</li><li>Mantenimiento preventivo y correctivo</li><li>Te contamos qué hemos revisado y qué conviene cambiar</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sx-panel" data-i="2" role="tabpanel" hidden>
+          <div class="sx-img"><img src="https://images.unsplash.com/photo-1709548145082-04d0cde481d4?w=1000&q=75&auto=format&fit=crop" alt="Reformas integrales" loading="lazy"></div>
+          <div class="sx-body"><h3>Reformas integrales</h3><p>Toda la instalación eléctrica nueva o renovada en naves, locales comerciales y oficinas.</p><ul><li>Instalación eléctrica completa</li><li>Naves, locales y oficinas</li><li>Nos adaptamos a los plazos de la obra</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sx-panel" data-i="3" role="tabpanel" hidden>
+          <div class="sx-img"><img src="https://images.unsplash.com/photo-1771531072574-af6ed6b954c0?w=1000&q=75&auto=format&fit=crop" alt="Iluminación LED" loading="lazy"></div>
+          <div class="sx-body"><h3>Iluminación LED</h3><p>Cambio a LED en naves y espacios de trabajo: más luz, menos consumo y menos mantenimiento.</p><ul><li>Estudio de la iluminación que tienes</li><li>LED en naves, almacenes y talleres</li><li>Menos consumo en la factura</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sx-panel" data-i="4" role="tabpanel" hidden>
+          <div class="sx-img"><img src="https://images.unsplash.com/photo-1552960226-639240203497?w=1000&q=75&auto=format&fit=crop" alt="Iluminación decorativa" loading="lazy"></div>
+          <div class="sx-body"><h3>Iluminación decorativa</h3><p>Diseño e instalación de iluminación para locales, fachadas y espacios que tienen que lucir.</p><ul><li>Locales, hostelería y fachadas</li><li>La luz pensada con el espacio</li><li>Instalación y regulación</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sx-panel" data-i="5" role="tabpanel" hidden>
+          <div class="sx-img"><img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=1000&q=75&auto=format&fit=crop" alt="Boletines y proyectos" loading="lazy"></div>
+          <div class="sx-body"><h3>Boletines y proyectos</h3><p>Boletines, legalizaciones y proyectos técnicos para dar de alta, ampliar o regularizar tu instalación.</p><ul><li>Boletines eléctricos</li><li>Legalizaciones y ampliaciones de potencia</li><li>Proyectos técnicos</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
+        </article></div>
     </div>
   </div>
 </section>
@@ -500,21 +582,28 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
 </section>
 
 <!-- PROCESS -->
-<section class="process dark" id="como-trabajamos">
-  <div class="wrap pr-grid">
-    <div class="pr-intro rv2">
-      <p class="tag">Cómo trabajamos</p>
-      <h2 class="h2">Del primer aviso al boletín, con una sola persona de contacto.</h2>
-      <p class="lead">Sin vueltas: nos cuentas qué necesitas, lo vemos en persona y te damos un presupuesto claro.</p>
+<section class="process2 dark" id="como-trabajamos">
+  <div class="wrap">
+    <div class="sp-head rv2"><p class="tag">Cómo trabajamos</p><h2 class="h2">Del primer aviso al boletín, con una sola persona de contacto.</h2><p class="lead">Sigue la corriente: así va un trabajo con nosotros, paso a paso.</p></div>
+    <div class="sp" id="sp">
+      <svg class="sp-svg" id="spsvg" aria-hidden="true"></svg>
+      <ol class="sp-steps"><li class="sp-step" style="--i:0">
+          <span class="sp-node"><span class="ring"></span>01</span>
+          <div class="sp-card"><div class="sp-img"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&q=75&auto=format&fit=crop" alt="" loading="lazy"><p class="sp-detail">Por teléfono o WhatsApp. Nos explicas el trabajo o la avería y dónde está.</p></div><h3>Nos llamas o escribes</h3></div>
+        </li><li class="sp-step" style="--i:1">
+          <span class="sp-node"><span class="ring"></span>02</span>
+          <div class="sp-card"><div class="sp-img"><img src="https://images.unsplash.com/photo-1615774925655-a0e97fc85c14?w=700&q=75&auto=format&fit=crop" alt="" loading="lazy"><p class="sp-detail">Vamos a ver la instalación, tomamos medidas y te proponemos la mejor solución.</p></div><h3>Visita y estudio</h3></div>
+        </li><li class="sp-step" style="--i:2">
+          <span class="sp-node"><span class="ring"></span>03</span>
+          <div class="sp-card"><div class="sp-img"><img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=700&q=75&auto=format&fit=crop" alt="" loading="lazy"><p class="sp-detail">Por escrito, con lo que incluye y los plazos. Sin sorpresas al final.</p></div><h3>Presupuesto claro</h3></div>
+        </li><li class="sp-step" style="--i:3">
+          <span class="sp-node"><span class="ring"></span>04</span>
+          <div class="sp-card"><div class="sp-img"><img src="https://images.unsplash.com/photo-1758101755915-462eddc23f57?w=700&q=75&auto=format&fit=crop" alt="" loading="lazy"><p class="sp-detail">Hacemos el trabajo con nuestro equipo y te entregamos la documentación y el boletín cuando hace falta.</p></div><h3>Ejecución y boletín</h3></div>
+        </li><li class="sp-step" style="--i:4">
+          <span class="sp-node"><span class="ring"></span>05</span>
+          <div class="sp-card"><div class="sp-img"><img src="https://images.unsplash.com/photo-1660330589693-99889d60181e?w=700&q=75&auto=format&fit=crop" alt="" loading="lazy"><p class="sp-detail">Si lo necesitas, seguimos contigo con revisiones periódicas para que todo siga funcionando.</p></div><h3>Mantenimiento</h3></div>
+        </li></ol>
     </div>
-    <ol class="steps" id="steps">
-      <span class="rail" aria-hidden="true"><i id="rail"></i></span>
-      <li class="step"><span class="dot">01</span><h3>Nos llamas o escribes</h3><p>Por teléfono o WhatsApp. Nos explicas el trabajo o la avería y dónde está.</p></li>
-      <li class="step"><span class="dot">02</span><h3>Visita y estudio</h3><p>Vamos a ver la instalación, tomamos medidas y te proponemos la mejor solución.</p></li>
-      <li class="step"><span class="dot">03</span><h3>Presupuesto claro</h3><p>Por escrito, con lo que incluye y los plazos. Sin sorpresas al final.</p></li>
-      <li class="step"><span class="dot">04</span><h3>Ejecución y boletín</h3><p>Hacemos el trabajo con nuestro equipo y te entregamos la documentación y el boletín cuando hace falta.</p></li>
-      <li class="step"><span class="dot">05</span><h3>Mantenimiento</h3><p>Si lo necesitas, seguimos contigo con revisiones periódicas para que todo siga funcionando.</p></li>
-    </ol>
   </div>
 </section>
 
@@ -572,10 +661,19 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
 </section>
 
 <!-- COMMITMENTS -->
-<section class="commit paperbg" id="compromiso">
-  <div class="wrap">
-    <div class="cm-head rv2"><p class="tag">Nuestro compromiso</p><h2 class="h2">Por qué nos llaman las empresas.</h2></div>
-    <div class="cm-cols"><div class="cm-col c0"><div class="cm-track"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Presupuesto por escrito</h3><p>Sabes qué incluye y cuánto cuesta antes de empezar.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Una sola persona de contacto</h3><p>Hablas siempre con alguien que conoce tu instalación.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Trato directo por WhatsApp</h3><p>Mándanos una foto de la avería y te decimos cómo lo vemos.</p></article><div class="cm-dup" aria-hidden="true"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Presupuesto por escrito</h3><p>Sabes qué incluye y cuánto cuesta antes de empezar.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Una sola persona de contacto</h3><p>Hablas siempre con alguien que conoce tu instalación.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Trato directo por WhatsApp</h3><p>Mándanos una foto de la avería y te decimos cómo lo vemos.</p></article></div></div></div><div class="cm-col c1"><div class="cm-track"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Paramos lo mínimo</h3><p>Planificamos el trabajo para que tu actividad siga en marcha.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Equipo propio</h3><p>La parte eléctrica la hacemos nosotros, de principio a fin.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Documentación en regla</h3><p>Boletines y legalizaciones cuando hacen falta, sin que te preocupes.</p></article><div class="cm-dup" aria-hidden="true"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Paramos lo mínimo</h3><p>Planificamos el trabajo para que tu actividad siga en marcha.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Equipo propio</h3><p>La parte eléctrica la hacemos nosotros, de principio a fin.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Documentación en regla</h3><p>Boletines y legalizaciones cuando hacen falta, sin que te preocupes.</p></article></div></div></div><div class="cm-col c2"><div class="cm-track"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>LED que se nota en la factura</h3><p>Planteamos la iluminación para gastar menos y ver mejor.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Comunidad Valenciana y más</h3><p>Castellón, Valencia y Alicante, y fuera si el proyecto lo merece.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Solo empresa e industria</h3><p>Centrados en lo que mejor hacemos, sin dispersarnos.</p></article><div class="cm-dup" aria-hidden="true"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>LED que se nota en la factura</h3><p>Planteamos la iluminación para gastar menos y ver mejor.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Comunidad Valenciana y más</h3><p>Castellón, Valencia y Alicante, y fuera si el proyecto lo merece.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Solo empresa e industria</h3><p>Centrados en lo que mejor hacemos, sin dispersarnos.</p></article></div></div></div></div>
+<section class="commit2 paperbg" id="compromiso">
+  <div class="wrap cm2-grid">
+    <div class="cm2-copy rv2">
+      <p class="tag">Nuestro compromiso</p>
+      <h2 class="h2">Por qué nos llaman las empresas.</h2>
+      <p class="lead">Arrastra la carta y lánzala hacia un lado, o usa las flechas.</p>
+      <div class="dk-ctrl">
+        <button class="dk-btn" type="button" data-dir="-1" aria-label="Anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <span class="dk-count" id="dkcount">01 / 09</span>
+        <button class="dk-btn" type="button" data-dir="1" aria-label="Siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+    </div>
+    <div class="deck" id="deck" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Compromisos. Arrastra o usa las flechas."><article class="dk-card y" data-i="0"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="dk-n">01 / 09</span><h3>Presupuesto por escrito</h3><p>Sabes qué incluye y cuánto cuesta antes de empezar.</p></article><article class="dk-card k" data-i="1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="dk-n">02 / 09</span><h3>Una sola persona de contacto</h3><p>Hablas siempre con alguien que conoce tu instalación.</p></article><article class="dk-card w" data-i="2"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="dk-n">03 / 09</span><h3>Trato directo por WhatsApp</h3><p>Mándanos una foto de la avería y te decimos cómo lo vemos.</p></article><article class="dk-card y" data-i="3"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="dk-n">04 / 09</span><h3>Paramos lo mínimo</h3><p>Planificamos el trabajo para que tu actividad siga en marcha.</p></article><article class="dk-card k" data-i="4"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="dk-n">05 / 09</span><h3>Equipo propio</h3><p>La parte eléctrica la hacemos nosotros, de principio a fin.</p></article><article class="dk-card w" data-i="5"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="dk-n">06 / 09</span><h3>Documentación en regla</h3><p>Boletines y legalizaciones cuando hacen falta, sin que te preocupes.</p></article><article class="dk-card y" data-i="6"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="dk-n">07 / 09</span><h3>LED que se nota en la factura</h3><p>Planteamos la iluminación para gastar menos y ver mejor.</p></article><article class="dk-card k" data-i="7"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="dk-n">08 / 09</span><h3>Comunidad Valenciana y más</h3><p>Castellón, Valencia y Alicante, y fuera si el proyecto lo merece.</p></article><article class="dk-card w" data-i="8"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><span class="dk-n">09 / 09</span><h3>Solo empresa e industria</h3><p>Centrados en lo que mejor hacemos, sin dispersarnos.</p></article></div>
   </div>
 </section>
 
@@ -670,16 +768,7 @@ addEventListener('scroll',navUpd,{passive:true});navUpd();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -10% 0px'});
 document.querySelectorAll('.rv2').forEach(el=>io.observe(el));
 
-// process rail fills with scroll and lights each step
-const stepsEl=document.getElementById('steps'),rail=document.getElementById('rail'),steps=[...stepsEl.querySelectorAll('.step')];
-function railUpd(){
-  const r=stepsEl.getBoundingClientRect(),mid=innerHeight*.6;
-  const p=Math.max(0,Math.min(1,(mid-r.top)/r.height));
-  rail.style.height=(p*100)+'%';
-  steps.forEach(s=>{const b=s.getBoundingClientRect();s.classList.toggle('on',b.top+18<mid)});
-}
-if(RM){steps.forEach(s=>s.classList.add('on'));rail.style.height='100%'}
-else{addEventListener('scroll',()=>requestAnimationFrame(railUpd),{passive:true});railUpd()}
+
 
 // FAQ accordion
 document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()=>{
@@ -731,6 +820,94 @@ document.getElementById('qform').addEventListener('submit',e=>{
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
+})();
+
+// SERVICES: tabs with auto-advance progress
+(()=>{const tabs=[...document.querySelectorAll('.sx-tab')],panels=[...document.querySelectorAll('.sx-panel')],box=document.querySelector('.sx-box');
+  let cur=0,timer=0,bar=null,inView=false,hover=false;const DUR=6000;
+  function show(i,user){cur=(i+tabs.length)%tabs.length;
+    tabs.forEach((t,k)=>{const on=k===cur;t.classList.toggle('on',on);t.setAttribute('aria-selected',String(on))});
+    panels.forEach((p,k)=>{const on=k===cur;p.hidden=!on;requestAnimationFrame(()=>p.classList.toggle('on',on))});
+    if(user&&tabs[cur].scrollIntoView&&innerWidth<900)tabs[cur].scrollIntoView({inline:'nearest',block:'nearest',behavior:RM?'auto':'smooth'});
+    run()}
+  function run(){clearTimeout(timer);if(bar)bar.cancel();if(RM||!inView||hover)return;
+    bar=tabs[cur].querySelector('.pb i').animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{duration:DUR,easing:'linear',fill:'forwards'});
+    timer=setTimeout(()=>show(cur+1),DUR)}
+  tabs.forEach(t=>t.addEventListener('click',()=>show(+t.dataset.i,true)));
+  document.querySelector('.sx-tabs').addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();show(cur+1,true);tabs[cur].focus()}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();show(cur-1,true);tabs[cur].focus()}});
+  box.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;run()}});box.addEventListener('pointerleave',()=>{hover=false;run()});
+  new IntersectionObserver(es=>es.forEach(e=>{inView=e.isIntersecting;run()}),{threshold:.35}).observe(box);
+  show(0);
+})();
+
+// PROCESS: a signal travels the path from step to step
+(()=>{const sp=document.getElementById('sp'),svg=document.getElementById('spsvg'),steps=[...sp.querySelectorAll('.sp-step')],nodes=steps.map(s=>s.querySelector('.sp-node'));
+  const NS='http://www.w3.org/2000/svg';let segs=[],tip,trail;
+  function build(){svg.innerHTML='';segs=[];const b=sp.getBoundingClientRect();
+    const c=nodes.map(n=>{const r=n.getBoundingClientRect();return{x:r.left-b.left+r.width/2,y:r.top-b.top+r.height/2}});
+    for(let i=0;i<c.length-1;i++){const a=c[i],d=c[i+1],dx=d.x-a.x,dy=d.y-a.y;
+      const dpath=Math.abs(dx)<20?`M${a.x} ${a.y+23} L${d.x} ${d.y-23}`:`M${a.x+23} ${a.y} C${a.x+dx*.35} ${a.y-90}, ${d.x-dx*.25} ${d.y-110}, ${d.x} ${d.y-23}`;
+      const p=document.createElementNS(NS,'path');p.setAttribute('d',dpath);p.setAttribute('class','base');svg.appendChild(p);segs.push(p)}
+    trail=document.createElementNS(NS,'path');trail.setAttribute('class','trail');svg.appendChild(trail);
+    tip=document.createElementNS(NS,'circle');tip.setAttribute('r','6');tip.setAttribute('class','tip');svg.appendChild(tip)}
+  build();addEventListener('resize',()=>{build()});
+  if(RM){steps.forEach(s=>s.classList.add('lit'));return}
+  const TRAVEL=1300,HOLD=700,CYCLE=(segs.length)*(TRAVEL+HOLD)+1400;let t0=performance.now(),visible=false,lastArr=-1;
+  new IntersectionObserver(es=>es.forEach(e=>{visible=e.isIntersecting;if(visible){t0=performance.now();lastArr=-1}}),{threshold:.25}).observe(sp);
+  function frame(now){
+    if(visible&&segs.length){
+      const t=(now-t0)%CYCLE;let k=Math.floor(t/(TRAVEL+HOLD)),local=t-k*(TRAVEL+HOLD);
+      let lit=0;
+      if(k>=segs.length){lit=steps.length;tip.style.opacity=0;trail.setAttribute('d','')}
+      else{const seg=segs[k],L=seg.getTotalLength(),f=Math.min(1,local/TRAVEL),e=f<.5?2*f*f:1-Math.pow(-2*f+2,2)/2;
+        const pt=seg.getPointAtLength(L*e);tip.setAttribute('cx',pt.x);tip.setAttribute('cy',pt.y);tip.style.opacity=f<1?1:0;
+        trail.setAttribute('d',seg.getAttribute('d'));trail.style.strokeDasharray=`${L*e} ${L}`;trail.style.strokeDashoffset=0;
+        lit=f>=1?k+2:k+1}
+      steps.forEach((s,i)=>s.classList.toggle('lit',i<lit));
+      const arr=lit-1;if(arr!==lastArr&&arr>=0&&arr<steps.length){const s=steps[arr];s.classList.remove('arrive');void s.offsetWidth;s.classList.add('arrive');lastArr=arr}
+    }
+    requestAnimationFrame(frame)}
+  requestAnimationFrame(frame);
+})();
+
+// COMMITMENTS: throwable card deck
+(()=>{const deck=document.getElementById('deck'),cards=[...deck.querySelectorAll('.dk-card')],count=document.getElementById('dkcount');
+  let order=cards.map((_,i)=>i),busy=false,auto=0,inView=false,hover=false;const N=cards.length;
+  const pad=n=>String(n).padStart(2,'0');
+  function layout(anim=true){order.forEach((ci,pos)=>{const c=cards[ci];const vis=Math.min(pos,3);
+    c.style.transition=anim&&!RM?'transform .55s cubic-bezier(.34,1.3,.5,1),opacity .3s':'none';
+    c.style.zIndex=N-pos;c.style.opacity=pos>3?0:1;c.classList.toggle('top',pos===0);
+    c.style.transform=`translateY(${vis*14}px) scale(${1-vis*.05}) rotate(${pos===0?0:(ci%2?1:-1)*vis*2.2}deg)`});
+    count.textContent=`${pad(order[0]+1)} / ${pad(N)}`}
+  function next(dir=1,vx){if(busy)return;busy=true;
+    if(dir>0){const top=cards[order[0]];const out=(vx||1)>0?1:-1;
+      top.style.transition=RM?'none':'transform .38s cubic-bezier(.4,0,1,1),opacity .38s';
+      top.style.transform=`translate(${out*120}%,-6%) rotate(${out*22}deg)`;top.style.opacity=0;
+      setTimeout(()=>{order.push(order.shift());layout(false);requestAnimationFrame(()=>{layout(true);busy=false})},RM?0:380)}
+    else{order.unshift(order.pop());const top=cards[order[0]];top.style.transition='none';top.style.transform='translate(-120%,-6%) rotate(-22deg)';top.style.opacity=0;
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{layout(true);busy=false}))}
+    restart()}
+  function restart(){clearInterval(auto);if(RM||!inView||hover)return;auto=setInterval(()=>next(1,1),3600)}
+  document.querySelectorAll('.dk-btn').forEach(b=>b.addEventListener('click',()=>next(+b.dataset.dir,+b.dataset.dir)));
+  deck.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();next(1,1)}if(e.key==='ArrowLeft'){e.preventDefault();next(-1)}});
+  // drag the top card
+  let drag=null;
+  deck.addEventListener('pointerdown',e=>{const c=e.target.closest('.dk-card');if(!c||c!==cards[order[0]]||busy)return;
+    drag={c,x0:e.clientX,y0:e.clientY,h:[[e.clientX,e.timeStamp]],moved:false};c.setPointerCapture(e.pointerId);c.style.transition='none';clearInterval(auto)});
+  deck.addEventListener('pointermove',e=>{if(!drag)return;const dx=e.clientX-drag.x0,dy=e.clientY-drag.y0;if(Math.abs(dx)>4)drag.moved=true;
+    drag.h.push([e.clientX,e.timeStamp]);if(drag.h.length>6)drag.h.shift();
+    drag.c.style.transform=`translate(${dx}px,${dy*.3}px) rotate(${dx*.06}deg)`});
+  const end=e=>{if(!drag)return;const {c,x0,h}=drag;drag=null;const dx=e.clientX-x0;
+    const a=h[0],b=h[h.length-1],vx=(b[0]-a[0])/Math.max(1,(b[1]-a[1]))*1000;
+    const projected=dx+vx*.25;
+    if(Math.abs(projected)>deck.clientWidth*.32){c.style.transition='transform .32s cubic-bezier(.2,.7,.4,1),opacity .32s';
+      const out=projected>0?1:-1;c.style.transform=`translate(${out*130}%,-4%) rotate(${out*24}deg)`;c.style.opacity=0;busy=true;
+      setTimeout(()=>{order.push(order.shift());layout(false);requestAnimationFrame(()=>{layout(true);busy=false})},320);restart()}
+    else{layout(true);restart()}};
+  deck.addEventListener('pointerup',end);deck.addEventListener('pointercancel',end);
+  deck.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;restart()}});deck.addEventListener('pointerleave',()=>{hover=false;restart()});
+  new IntersectionObserver(es=>es.forEach(e=>{inView=e.isIntersecting;restart()}),{threshold:.4}).observe(deck);
+  layout(false);
 })();
 </script>
 </body>
