@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eléctricas Algui · Instalaciones y proyectos eléctricos para empresa e industria</title>
+<meta name="description" content="Eléctricas Algui S.L.: reparación y mantenimiento industrial, reformas integrales, iluminación LED y decorativa, boletines y proyectos eléctricos en la Comunidad Valenciana.">
+<meta name="theme-color" content="#121210">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@112..125,700;112..125,800;112..125,900&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#121210; --ink2:#1C1C19; --volt:#FFD200; --volt2:#FFE45C; --paper:#EDEDE8; --white:#fff;
+  --steel:#66665F; --fog:#A6A69E; --lineD:rgba(255,255,255,.12); --lineL:rgba(18,18,16,.12);
+  --pad:clamp(18px,5vw,72px); --max:1280px;
+  --disp:"Archivo",system-ui,sans-serif; --body:"Barlow",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font:400 1.0625rem/1.6 var(--body);color:var(--ink);background:var(--paper);overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--volt);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--pad)}
+.disp{font-family:var(--disp);font-stretch:125%;font-weight:800;letter-spacing:-.025em;line-height:.98}
+.h2{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(2rem,4.6vw,3.6rem);line-height:1.02;letter-spacing:-.025em;max-width:18ch}
+.lead{font-size:1.15rem;color:var(--steel);max-width:52ch;margin-top:16px}
+.dark .lead{color:var(--fog)}
+.tag{display:inline-flex;align-items:center;gap:10px;font-weight:600;font-size:.95rem;margin-bottom:18px}
+.tag::before{content:"";width:22px;height:4px;background:var(--volt)}
+.paperbg .tag::before{background:var(--ink)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 22px;border-radius:12px;font:700 1rem/1 var(--body);border:0;cursor:pointer;transition:transform .1s ease-out,background .2s,box-shadow .2s;white-space:nowrap}
+.btn:active{transform:scale(.97)}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-volt{background:var(--volt);color:var(--ink)}
+.btn-volt:hover{background:var(--volt2)}
+.btn-wa{background:#1FAF58;color:#fff}
+.btn-wa:hover{background:#25C866}
+.btn-line{background:transparent;box-shadow:inset 0 0 0 2px currentColor}
+.btn-ink{background:var(--ink);color:#fff}
+.btn-ink:hover{background:#2a2a26}
+section{position:relative}
+.dark{background:var(--ink);color:#fff}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s,box-shadow .3s}
+.nav .in{display:flex;align-items:center;gap:28px;height:76px}
+.nav.solid{background:rgba(18,18,16,.86);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%);box-shadow:0 1px 0 var(--lineD)}
+.nav .logo img{height:44px;width:auto}
+.nav ul{display:flex;gap:26px;list-style:none;margin-left:auto;color:#fff;font-weight:500}
+.nav ul a{opacity:.78;transition:opacity .15s}.nav ul a:hover{opacity:1}
+.nav .acts{display:flex;gap:10px}
+.nav .btn{padding:12px 16px;font-size:.95rem}
+@media (max-width:1060px){.nav ul{display:none}.nav .acts{margin-left:auto}}
+@media (max-width:620px){.nav .btn .t{display:none}.nav .btn{padding:12px}.nav .logo img{height:38px}}
+
+/* HERO */
+.hero{background:var(--ink);color:#fff;padding:120px 0 0;overflow:hidden}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(24px,4vw,64px);align-items:center;min-height:calc(100svh - 230px)}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.7rem)}
+.hero h1 em{font-style:normal;color:var(--volt)}
+.hero .sub{font-size:clamp(1.05rem,1.4vw,1.25rem);color:#d9d9d2;max-width:46ch;margin-top:22px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.hero .note{margin-top:18px;color:var(--fog);font-size:.95rem}
+.hero .note b{color:#fff;font-weight:600}
+.schem{width:100%;height:auto;overflow:visible;transform:scale(1.08);transform-origin:50% 50%}
+.schem .w{fill:none;stroke:rgba(255,255,255,.28);stroke-width:2}
+.schem .y{fill:none;stroke:var(--volt);stroke-width:2.5}
+.schem .flow{fill:none;stroke:var(--volt2);stroke-width:3;stroke-dasharray:6 34;stroke-linecap:round;opacity:0}
+.schem text{fill:#cfcfc7;font:600 13px var(--body)}
+.schem .lbl{fill:var(--volt);font:800 12px var(--disp);font-stretch:125%}
+.schem .node{fill:var(--ink);stroke:var(--volt);stroke-width:2.5}
+.ready .schem .flow{opacity:1;animation:flow 1.6s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-40}}
+.facts{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--lineD);margin-top:clamp(40px,6vh,70px)}
+.facts div{padding:24px 20px 28px 0}
+.facts div+div{padding-left:22px;border-left:1px solid var(--lineD)}
+.facts b{display:block;font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(1.05rem,1.6vw,1.35rem);line-height:1.15}
+.facts span{color:var(--fog);font-size:.95rem}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;min-height:0}.schem{max-width:560px;margin:0 auto}.facts{grid-template-columns:1fr 1fr}.facts div:nth-child(3){padding-left:0;border-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--lineD)}}
+/* hero entrance (one orchestrated moment) */
+.hero .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform 1s cubic-bezier(.16,1,.3,1)}
+.ready .hero .rv{opacity:1;transform:none}
+.ready .hero .rv:nth-child(2){transition-delay:.08s}.ready .hero .rv:nth-child(3){transition-delay:.16s}.ready .hero .rv:nth-child(4){transition-delay:.24s}.ready .hero .rv:nth-child(5){transition-delay:.32s}
+.schem .draw{stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
+.ready .schem .draw{stroke-dashoffset:0;transition:stroke-dashoffset 1.8s cubic-bezier(.65,0,.35,1) .3s}
+
+/* SERVICES */
+.services{padding:clamp(70px,9vw,130px) 0}
+.sv-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:44px}
+.sv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.sv{position:relative;background:var(--white);border-radius:18px;padding:28px 26px 30px;overflow:hidden;isolation:isolate;min-height:270px;display:flex;flex-direction:column;
+  box-shadow:0 1px 0 rgba(18,18,16,.06);transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+.sv::before{content:"";position:absolute;inset:0;background:var(--volt);transform:translateY(101%);transition:transform .5s cubic-bezier(.16,1,.3,1);z-index:-1}
+.sv:hover::before,.sv:focus-within::before{transform:none}
+.sv:hover{transform:translateY(-4px)}
+.sv .ic{width:54px;height:54px;margin-bottom:auto}
+.sv .ic *{fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sv .ic .acc{stroke:#C9A400}
+.sv:hover .ic .acc{stroke:var(--ink)}
+.sv h3{font-family:var(--disp);font-stretch:115%;font-weight:800;font-size:1.35rem;line-height:1.1;margin-top:34px;letter-spacing:-.015em}
+.sv p{color:var(--steel);margin-top:10px;font-size:1rem;transition:color .3s}
+.sv:hover p{color:#3a3a33}
+@media (max-width:980px){.sv-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.sv-grid{grid-template-columns:1fr}.sv{min-height:0}.sv h3{margin-top:22px}}
+
+/* FIT: what we do / don't */
+.fit{padding:0 0 clamp(70px,9vw,130px)}
+.fit-card{display:grid;grid-template-columns:1fr 1fr;border-radius:24px;overflow:hidden;background:var(--ink);color:#fff}
+.fit-card>div{padding:clamp(28px,4vw,52px)}
+.fit-yes{background:var(--volt);color:var(--ink)}
+.fit h3{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.05;margin-bottom:22px}
+.fit ul{list-style:none;display:grid;gap:12px;font-size:1.08rem;font-weight:500}
+.fit li{display:flex;gap:12px;align-items:flex-start}
+.fit li svg{width:22px;height:22px;flex:none;margin-top:2px}
+.fit-no li span{text-decoration:line-through;text-decoration-color:rgba(255,210,0,.7);text-decoration-thickness:2px;color:#d6d6cf}
+.fit-no p{color:var(--fog);margin-top:22px;max-width:40ch}
+@media (max-width:780px){.fit-card{grid-template-columns:1fr}}
+
+/* PROCESS */
+.process{padding:clamp(80px,10vw,140px) 0;overflow:hidden}
+.pr-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,90px)}
+.pr-intro{position:sticky;top:120px;align-self:start}
+.steps{position:relative;list-style:none;padding-left:56px}
+.steps .rail{position:absolute;left:17px;top:6px;bottom:6px;width:3px;background:var(--lineD);border-radius:3px}
+.steps .rail i{position:absolute;inset:0 0 auto;height:0;background:var(--volt);border-radius:3px;box-shadow:0 0 18px rgba(255,210,0,.6)}
+.step{position:relative;padding:4px 0 46px}
+.step:last-child{padding-bottom:0}
+.step .dot{position:absolute;left:-56px;top:0;width:37px;height:37px;border-radius:50%;background:var(--ink);box-shadow:inset 0 0 0 2px rgba(255,255,255,.25);display:grid;place-items:center;
+  font:800 .85rem/1 var(--disp);color:var(--fog);transition:background .4s,color .4s,box-shadow .4s}
+.step.on .dot{background:var(--volt);color:var(--ink);box-shadow:0 0 0 6px rgba(255,210,0,.18)}
+.step h3{font-family:var(--disp);font-stretch:115%;font-weight:800;font-size:clamp(1.25rem,2vw,1.6rem);line-height:1.1;transition:color .4s;color:#8d8d86}
+.step.on h3{color:#fff}
+.step p{color:var(--fog);margin-top:8px;max-width:48ch}
+@media (max-width:860px){.pr-grid{grid-template-columns:1fr}.pr-intro{position:static}}
+
+/* SECTORS */
+.sectors{padding:clamp(80px,10vw,140px) 0}
+.sec-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:14px;margin-top:44px}
+.sec-feat{background:var(--ink);color:#fff;border-radius:22px;padding:clamp(26px,3.5vw,44px);display:flex;flex-direction:column;justify-content:space-between;min-height:420px;position:relative;overflow:hidden}
+.sec-feat .bg{position:absolute;right:-30px;bottom:-20px;width:58%;opacity:.35}
+.sec-feat .k{color:var(--volt);font-weight:600}
+.sec-feat h3{font-family:var(--disp);font-stretch:125%;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);line-height:.98;margin:10px 0 14px;max-width:12ch;position:relative}
+.sec-feat p{color:#cfcfc7;max-width:40ch;position:relative}
+.sec-list{display:grid;gap:14px}
+.sec-item{display:flex;justify-content:space-between;align-items:center;gap:20px;background:var(--white);border-radius:18px;padding:24px 26px;transition:background .25s,transform .25s cubic-bezier(.2,.8,.2,1)}
+.sec-item:hover{background:var(--volt);transform:translateX(6px)}
+.sec-item h4{font-family:var(--disp);font-stretch:115%;font-weight:800;font-size:1.2rem;line-height:1.1}
+.sec-item p{color:var(--steel);font-size:.97rem;margin-top:4px}
+.sec-item:hover p{color:#3a3a33}
+.sec-item svg{width:28px;height:28px;flex:none;fill:none;stroke:currentColor;stroke-width:2}
+@media (max-width:860px){.sec-grid{grid-template-columns:1fr}.sec-feat{min-height:340px}}
+
+/* ZONE */
+.zone{padding:clamp(80px,10vw,140px) 0;overflow:hidden}
+.zone-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,6vw,90px);align-items:center}
+.coast{position:relative;height:clamp(380px,46vw,520px)}
+.coast svg{width:100%;height:100%}
+.coast .c{fill:none;stroke:rgba(255,255,255,.22);stroke-width:2;stroke-dasharray:4 8}
+.coast .p{fill:var(--volt)}
+.coast .ring{fill:none;stroke:var(--volt);stroke-width:2;opacity:.6;transform-box:fill-box;transform-origin:center;animation:ping 2.6s ease-out infinite}
+.coast .ring.d2{animation-delay:.9s}.coast .ring.d3{animation-delay:1.8s}
+@keyframes ping{0%{transform:scale(.6);opacity:.8}100%{transform:scale(2.6);opacity:0}}
+.coast text{fill:#fff;font:800 20px var(--disp);font-stretch:118%}
+.coast .s{fill:var(--fog);font:500 14px var(--body)}
+.zone .out{margin-top:26px;display:flex;gap:14px;align-items:flex-start;background:var(--ink2);border-radius:16px;padding:20px 22px;max-width:46ch}
+.zone .out svg{width:26px;height:26px;flex:none;fill:none;stroke:var(--volt);stroke-width:2}
+@media (max-width:860px){.zone-grid{grid-template-columns:1fr}}
+
+/* EMERGENCY BAND */
+.band{background:var(--volt);color:var(--ink);padding:clamp(44px,6vw,72px) 0;overflow:hidden}
+.band .in{display:flex;justify-content:space-between;align-items:center;gap:28px;flex-wrap:wrap}
+.band h2{font-family:var(--disp);font-stretch:125%;font-weight:900;font-size:clamp(1.8rem,4vw,3.2rem);line-height:1;max-width:20ch}
+.band p{font-weight:500;margin-top:10px;max-width:50ch}
+.band .acts{display:flex;gap:12px;flex-wrap:wrap}
+.band .hz{position:absolute;left:0;right:0;height:10px;background:repeating-linear-gradient(-45deg,var(--ink) 0 14px,var(--volt) 14px 28px)}
+.band .hz.t{top:0}.band .hz.b{bottom:0}
+
+/* FAQ */
+.faq{padding:clamp(80px,10vw,140px) 0}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(30px,6vw,90px)}
+.qa{border-top:1px solid var(--lineL)}
+.qa:last-child{border-bottom:1px solid var(--lineL)}
+.qa button{width:100%;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;background:none;border:0;cursor:pointer;text-align:left;
+  font-family:var(--disp);font-stretch:112%;font-weight:700;font-size:clamp(1.05rem,1.6vw,1.25rem);line-height:1.2}
+.qa .pm{position:relative;width:34px;height:34px;flex:none;border-radius:50%;background:var(--white);transition:background .25s}
+.qa .pm::before,.qa .pm::after{content:"";position:absolute;left:50%;top:50%;width:14px;height:2.5px;margin:-1.25px 0 0 -7px;background:var(--ink);border-radius:2px;transition:transform .35s cubic-bezier(.34,1.4,.5,1)}
+.qa .pm::after{transform:rotate(90deg)}
+.qa.open .pm{background:var(--volt)}
+.qa.open .pm::after{transform:rotate(0)}
+.qa .ans{display:grid;grid-template-rows:0fr;transition:grid-template-rows .45s cubic-bezier(.16,1,.3,1)}
+.qa.open .ans{grid-template-rows:1fr}
+.qa .ans>div{overflow:hidden}
+.qa .ans p{padding:0 50px 24px 0;color:var(--steel)}
+@media (max-width:860px){.faq-grid{grid-template-columns:1fr}}
+
+/* CONTACT */
+.contact{padding:clamp(80px,10vw,140px) 0}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+.phone{display:block;font-family:var(--disp);font-stretch:125%;font-weight:900;font-size:clamp(2.2rem,5.4vw,4.4rem);line-height:1;color:var(--volt);margin:26px 0 8px;letter-spacing:-.02em}
+.phone:hover{color:var(--volt2)}
+.ct-acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+form{background:var(--ink2);border-radius:22px;padding:clamp(22px,3vw,36px);display:grid;gap:14px}
+form .two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+label{display:grid;gap:7px;font-size:.92rem;color:var(--fog);font-weight:500}
+input,select,textarea{width:100%;padding:14px 16px;border-radius:12px;border:1px solid var(--lineD);background:#0c0c0b;color:#fff;font:500 1rem/1.3 var(--body)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--volt);box-shadow:0 0 0 3px rgba(255,210,0,.2)}
+textarea{min-height:120px;resize:vertical}
+form .btn{width:100%;margin-top:4px}
+.hint{font-size:.88rem;color:var(--fog)}
+@media (max-width:860px){.ct-grid{grid-template-columns:1fr}}
+@media (max-width:480px){form .two{grid-template-columns:1fr}}
+
+/* FOOTER */
+footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
+.ft{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap;align-items:flex-start}
+.ft img{height:64px;width:auto}
+.ft nav{display:flex;gap:22px;flex-wrap:wrap;color:#d6d6cf}
+.ft small{display:block;margin-top:30px;padding-top:22px;border-top:1px solid var(--lineD)}
+@media (min-width:861px){footer{padding-bottom:56px}}
+
+/* MOBILE CALL BAR */
+.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;gap:10px;padding:8px;border-radius:18px;background:rgba(18,18,16,.86);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.mbar .btn{flex:1;padding:15px 10px}
+@media (max-width:860px){.mbar{display:flex}}
+
+/* section reveal, once */
+.js .rv2{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .9s cubic-bezier(.16,1,.3,1)}
+.js .rv2.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+  .hero .rv,.js .rv2{opacity:1;transform:none}
+  .schem .draw{stroke-dashoffset:0}
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap in">
+    <a class="logo" href="#top" aria-label="Eléctricas Algui, inicio"><img src="assets/logo-algui-amarillo.png" alt="Eléctricas Algui S.L." width="1100" height="622"></a>
+    <ul>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+      <li><a href="#sectores">Sectores</a></li>
+      <li><a href="#zona">Zona</a></li>
+      <li><a href="#preguntas">Preguntas</a></li>
+    </ul>
+    <div class="acts">
+      <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg><span class="t">WhatsApp</span></a>
+      <a class="btn btn-volt" data-tel href="#" aria-label="Llamar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><span class="t" data-telfmt>Llamar</span></a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="tag rv">Instalaciones y proyectos integrales</p>
+        <h1 class="disp rv">Electricidad para <em>empresa e industria</em>, sin parar la producción.</h1>
+        <p class="sub rv">Reparación y mantenimiento industrial, reformas integrales, iluminación LED y decorativa, boletines y proyectos eléctricos en toda la Comunidad Valenciana.</p>
+        <div class="ctas rv">
+          <a class="btn btn-volt" data-tel href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg>Llamar ahora</a>
+          <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15.1L2 22l5-1.3A10 10 0 1012 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.4.6-.4.5c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.4 2.4 1.5.3.1.5.1.7-.1l.9-1.1c.2-.3.4-.2.7-.1l1.9.9c.3.1.5.2.5.3.1.2.1.8-.1 1.4z"/></svg>Escribir por WhatsApp</a>
+        </div>
+        <p class="note rv">Trabajos para <b>empresas, naves y locales</b>. No hacemos pequeñas averías en viviendas.</p>
+      </div>
+      <!-- single-line diagram: supply → panel → loads -->
+      <svg class="schem" viewBox="0 0 560 460" role="img" aria-label="Esquema eléctrico: acometida, cuadro general y circuitos de maquinaria, iluminación LED y fuerza">
+        <!-- incoming supply -->
+        <path class="w draw" d="M60 30 V110"/>
+        <circle class="node" cx="60" cy="122" r="12"/><circle class="node" cx="60" cy="140" r="12"/>
+        <text x="84" y="128">Acometida</text>
+        <path class="w draw" d="M60 152 V200"/>
+        <!-- main breaker -->
+        <path class="y draw" d="M60 200 L80 228"/><path class="w draw" d="M60 236 V262"/>
+        <text x="96" y="228">Cuadro general</text>
+        <!-- busbar -->
+        <path class="y draw" d="M60 262 H500" style="stroke-width:5"/>
+        <path class="flow" d="M60 30 V110 M60 152 V200 M60 236 V262 H500"/>
+        <!-- feeder 1: motor -->
+        <path class="w draw" d="M130 262 V300"/><path class="y draw" d="M130 300 L146 324"/><path class="w draw" d="M130 330 V372"/>
+        <circle class="node" cx="130" cy="394" r="22"/><text class="lbl" x="122" y="399">M</text>
+        <text x="96" y="440">Maquinaria</text>
+        <path class="flow" d="M130 262 V300 M130 330 V372"/>
+        <!-- feeder 2: LED lighting -->
+        <path class="w draw" d="M250 262 V300"/><path class="y draw" d="M250 300 L266 324"/><path class="w draw" d="M250 330 V372"/>
+        <circle class="node" cx="250" cy="394" r="22"/><path class="y" d="M235 379 L265 409 M265 379 L235 409"/>
+        <text x="206" y="440">Iluminación LED</text>
+        <path class="flow" d="M250 262 V300 M250 330 V372"/>
+        <!-- feeder 3: power sockets -->
+        <path class="w draw" d="M370 262 V300"/><path class="y draw" d="M370 300 L386 324"/><path class="w draw" d="M370 330 V372"/>
+        <rect class="node" x="348" y="372" width="44" height="44" rx="8"/><circle class="y" cx="362" cy="394" r="3"/><circle class="y" cx="378" cy="394" r="3"/>
+        <text x="352" y="440">Fuerza</text>
+        <path class="flow" d="M370 262 V300 M370 330 V372"/>
+        <!-- feeder 4: certificate -->
+        <path class="w draw" d="M490 262 V372"/>
+        <rect class="node" x="468" y="372" width="44" height="44" rx="6"/><path class="y" d="M478 386 H502 M478 394 H502 M478 402 H494"/>
+        <text x="458" y="440">Boletín</text>
+        <path class="flow" d="M490 262 V372"/>
+        <text class="lbl" x="420" y="40">400 / 230 V</text>
+        <path class="w" d="M420 52 H530" style="stroke-dasharray:3 6"/>
+      </svg>
+    </div>
+    <div class="facts rv">
+      <div><b>Empresa e industria</b><span>Naves, fábricas, locales y oficinas</span></div>
+      <div><b>Comunidad Valenciana</b><span>Y fuera cuando el proyecto lo merece</span></div>
+      <div><b>Boletines y proyectos</b><span>Toda la documentación eléctrica</span></div>
+      <div><b>Trato directo</b><span>Llamada o WhatsApp, sin intermediarios</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services paperbg" id="servicios">
+  <div class="wrap">
+    <div class="sv-head rv2">
+      <div><p class="tag">Servicios</p><h2 class="h2">Un mismo equipo para toda la parte eléctrica.</h2></div>
+      <p class="lead">De la avería que para una línea de producción al proyecto completo de una nave. Lo hacemos nosotros, de principio a fin.</p>
+    </div>
+    <div class="sv-grid">
+      <article class="sv rv2" tabindex="0">
+        <svg class="ic" viewBox="0 0 54 54"><path d="M30 6 14 30h12l-4 18 18-26H28z" class="acc"/><circle cx="40" cy="40" r="8"/><path d="M46 46l5 5"/></svg>
+        <h3>Reparaciones industriales</h3>
+        <p>Averías en maquinaria, cuadros y líneas de fábricas y naves. Localizamos el fallo y lo dejamos funcionando cuanto antes.</p>
+      </article>
+      <article class="sv rv2" tabindex="0">
+        <svg class="ic" viewBox="0 0 54 54"><circle cx="27" cy="27" r="19"/><path d="M27 15v12l8 5" class="acc"/><path d="M27 4v4M27 46v4M4 27h4M46 27h4"/></svg>
+        <h3>Mantenimiento industrial</h3>
+        <p>Revisiones periódicas y mantenimiento preventivo y correctivo para que tu instalación no te dé sustos.</p>
+      </article>
+      <article class="sv rv2" tabindex="0">
+        <svg class="ic" viewBox="0 0 54 54"><path d="M6 48V22L27 8l21 14v26z"/><path d="M18 48V32h18v16" class="acc"/><path d="M27 20v6"/></svg>
+        <h3>Reformas integrales</h3>
+        <p>Toda la instalación eléctrica nueva o renovada en naves, locales comerciales y oficinas.</p>
+      </article>
+      <article class="sv rv2" tabindex="0">
+        <svg class="ic" viewBox="0 0 54 54"><path d="M8 14h38l-6 12H14z"/><path d="M16 32l-4 8M27 32v10M38 32l4 8" class="acc"/></svg>
+        <h3>Iluminación LED</h3>
+        <p>Cambio a LED en naves y espacios de trabajo: más luz, menos consumo y menos mantenimiento.</p>
+      </article>
+      <article class="sv rv2" tabindex="0">
+        <svg class="ic" viewBox="0 0 54 54"><path d="M27 6a13 13 0 00-8 23c2 2 3 4 3 7h10c0-3 1-5 3-7a13 13 0 00-8-23z"/><path d="M22 42h10M24 48h6" class="acc"/></svg>
+        <h3>Iluminación decorativa</h3>
+        <p>Diseño e instalación de iluminación para locales, fachadas y espacios que tienen que lucir.</p>
+      </article>
+      <article class="sv rv2" tabindex="0">
+        <svg class="ic" viewBox="0 0 54 54"><path d="M12 4h22l10 10v36H12z"/><path d="M34 4v10h10"/><path d="M19 26h18M19 33h18M19 40h11" class="acc"/></svg>
+        <h3>Boletines y proyectos eléctricos</h3>
+        <p>Boletines, legalizaciones y proyectos técnicos para dar de alta, ampliar o regularizar tu instalación.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- FIT -->
+<section class="fit paperbg">
+  <div class="wrap">
+    <div class="fit-card rv2">
+      <div class="fit-yes">
+        <h3>Con quién trabajamos</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Industrias, fábricas y naves</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Empresas y oficinas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Locales y comercios</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12.5l5 5L20 6.5"/></svg>Reformas integrales y proyectos completos</li>
+        </ul>
+      </div>
+      <div class="fit-no">
+        <h3>Lo que no hacemos</h3>
+        <ul>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#FFD200" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Pequeñas averías en viviendas</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#FFD200" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Reformas de cocinas</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="#FFD200" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg><span>Arreglos domésticos puntuales</span></li>
+        </ul>
+        <p>Así dedicamos todo el equipo a los trabajos de empresa e industria, que es lo que mejor hacemos.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process dark" id="como-trabajamos">
+  <div class="wrap pr-grid">
+    <div class="pr-intro rv2">
+      <p class="tag">Cómo trabajamos</p>
+      <h2 class="h2">Del primer aviso al boletín, con una sola persona de contacto.</h2>
+      <p class="lead">Sin vueltas: nos cuentas qué necesitas, lo vemos en persona y te damos un presupuesto claro.</p>
+    </div>
+    <ol class="steps" id="steps">
+      <span class="rail" aria-hidden="true"><i id="rail"></i></span>
+      <li class="step"><span class="dot">01</span><h3>Nos llamas o escribes</h3><p>Por teléfono o WhatsApp. Nos explicas el trabajo o la avería y dónde está.</p></li>
+      <li class="step"><span class="dot">02</span><h3>Visita y estudio</h3><p>Vamos a ver la instalación, tomamos medidas y te proponemos la mejor solución.</p></li>
+      <li class="step"><span class="dot">03</span><h3>Presupuesto claro</h3><p>Por escrito, con lo que incluye y los plazos. Sin sorpresas al final.</p></li>
+      <li class="step"><span class="dot">04</span><h3>Ejecución y boletín</h3><p>Hacemos el trabajo con nuestro equipo y te entregamos la documentación y el boletín cuando hace falta.</p></li>
+      <li class="step"><span class="dot">05</span><h3>Mantenimiento</h3><p>Si lo necesitas, seguimos contigo con revisiones periódicas para que todo siga funcionando.</p></li>
+    </ol>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section class="sectors paperbg" id="sectores">
+  <div class="wrap">
+    <div class="rv2"><p class="tag">Sectores</p><h2 class="h2">Instalaciones que no se pueden permitir parar.</h2></div>
+    <div class="sec-grid">
+      <article class="sec-feat rv2">
+        <svg class="bg" viewBox="0 0 400 260" aria-hidden="true"><g fill="none" stroke="rgba(255,210,0,.55)" stroke-width="2"><path d="M10 250V120l80-50v50l80-50v50l80-50v50l80-50v180z"/><path d="M40 250v-60h60v60M150 250v-60h60v60M260 250v-60h60v60" stroke="rgba(255,255,255,.25)"/><path d="M330 70V20h30v80"/></g></svg>
+        <div><p class="k">Sector principal</p><h3>Industria y naves</h3><p>Maquinaria, cuadros de distribución, líneas de fuerza e iluminación de nave. Reparamos, mantenemos y renovamos sin frenar tu actividad más de lo necesario.</p></div>
+        <div style="position:relative;margin-top:24px"><a class="btn btn-volt" href="#contacto">Pedir presupuesto</a></div>
+      </article>
+      <div class="sec-list">
+        <a class="sec-item rv2" href="#contacto"><div><h4>Logística y almacenes</h4><p>Iluminación LED de gran altura y mantenimiento.</p></div><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <a class="sec-item rv2" href="#contacto"><div><h4>Locales y comercios</h4><p>Reformas integrales e iluminación decorativa.</p></div><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <a class="sec-item rv2" href="#contacto"><div><h4>Oficinas y empresas</h4><p>Instalación nueva, ampliaciones y boletines.</p></div><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        <a class="sec-item rv2" href="#contacto"><div><h4>Proyectos a medida</h4><p>Estudio, proyecto eléctrico y legalización.</p></div><svg viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ZONE -->
+<section class="zone dark" id="zona">
+  <div class="wrap zone-grid">
+    <div class="rv2">
+      <p class="tag">Zona de trabajo</p>
+      <h2 class="h2">Toda la Comunidad Valenciana.</h2>
+      <p class="lead">Nos movemos por Castellón, Valencia y Alicante para trabajos de empresa e industria.</p>
+      <div class="out"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h15M13 6l6 6-6 6"/></svg><p>¿Tu proyecto está fuera? También nos desplazamos cuando el proyecto lo merece. Cuéntanoslo y lo valoramos.</p></div>
+    </div>
+    <div class="coast rv2" aria-hidden="true">
+      <svg viewBox="0 0 400 520">
+        <path class="c" d="M250 10 C230 80 215 120 200 170 S170 260 190 300 S230 360 250 400 S300 470 330 510"/>
+        <g><circle class="ring" cx="244" cy="80" r="10"/><circle class="p" cx="244" cy="80" r="9"/><text x="274" y="76">Castellón</text><text class="s" x="274" y="98">Norte</text></g>
+        <g><circle class="ring d2" cx="188" cy="250" r="10"/><circle class="p" cx="188" cy="250" r="9"/><text x="218" y="246">Valencia</text><text class="s" x="218" y="268">Centro</text></g>
+        <g><circle class="ring d3" cx="262" cy="420" r="10"/><circle class="p" cx="262" cy="420" r="9"/><text x="292" y="416">Alicante</text><text class="s" x="292" y="438">Sur</text></g>
+        <text class="s" x="40" y="500">Mar Mediterráneo →</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- BAND -->
+<section class="band">
+  <span class="hz t" aria-hidden="true"></span><span class="hz b" aria-hidden="true"></span>
+  <div class="wrap in">
+    <div><h2>¿Se ha parado una máquina o un cuadro?</h2><p>Llámanos y te decimos cuándo podemos ir. Si prefieres, mándanos una foto por WhatsApp.</p></div>
+    <div class="acts">
+      <a class="btn btn-ink" data-tel href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><span data-telfmt>Llamar</span></a>
+      <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener">Enviar foto por WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq paperbg" id="preguntas">
+  <div class="wrap faq-grid">
+    <div class="rv2"><p class="tag">Preguntas frecuentes</p><h2 class="h2">Lo que más nos preguntan.</h2><p class="lead">¿No ves tu duda? Escríbenos por WhatsApp y te respondemos.</p></div>
+    <div class="qas rv2" id="qas">
+      <div class="qa"><button type="button" aria-expanded="false">¿Hacéis boletines eléctricos?<span class="pm" aria-hidden="true"></span></button><div class="ans"><div><p>Sí. Hacemos boletines, legalizaciones y proyectos eléctricos para dar de alta, ampliar o regularizar instalaciones de empresas, naves y locales.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">¿Trabajáis fuera de la Comunidad Valenciana?<span class="pm" aria-hidden="true"></span></button><div class="ans"><div><p>Nuestra zona habitual es Castellón, Valencia y Alicante, pero nos desplazamos fuera cuando el proyecto lo merece. Cuéntanos qué es y dónde, y lo valoramos.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">¿Hacéis reparaciones en casas particulares?<span class="pm" aria-hidden="true"></span></button><div class="ans"><div><p>No hacemos pequeñas averías domésticas ni reformas de cocina. Nos dedicamos a empresas, industria, locales y reformas integrales.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">¿Ofrecéis mantenimiento periódico?<span class="pm" aria-hidden="true"></span></button><div class="ans"><div><p>Sí. Hacemos mantenimiento preventivo y correctivo con revisiones periódicas adaptadas a tu instalación y a tu actividad.</p></div></div></div>
+      <div class="qa"><button type="button" aria-expanded="false">¿Cómo pido un presupuesto?<span class="pm" aria-hidden="true"></span></button><div class="ans"><div><p>Llámanos, escríbenos por WhatsApp o rellena el formulario de abajo. Normalmente pasamos a ver la instalación antes de darte un precio cerrado.</p></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact dark" id="contacto">
+  <div class="wrap ct-grid">
+    <div class="rv2">
+      <p class="tag">Contacto</p>
+      <h2 class="h2">Cuéntanos tu proyecto.</h2>
+      <p class="lead">La forma más rápida es llamarnos o escribirnos por WhatsApp. Te atiende directamente el equipo.</p>
+      <a class="phone" data-tel data-telfmt href="#">Llamar</a>
+      <div class="ct-acts">
+        <a class="btn btn-volt" data-tel href="#">Llamar ahora</a>
+        <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener">Escribir por WhatsApp</a>
+      </div>
+    </div>
+    <form id="qform" class="rv2">
+      <div class="two">
+        <label>Nombre<input name="nombre" required autocomplete="name"></label>
+        <label>Empresa<input name="empresa" autocomplete="organization"></label>
+      </div>
+      <div class="two">
+        <label>Tipo de trabajo
+          <select name="tipo"><option>Reparación industrial</option><option>Mantenimiento industrial</option><option>Reforma integral</option><option>Iluminación LED</option><option>Iluminación decorativa</option><option>Boletín o proyecto eléctrico</option><option>Otro</option></select>
+        </label>
+        <label>Localidad<input name="lugar" required placeholder="Ej. Paterna"></label>
+      </div>
+      <label>¿Qué necesitas?<textarea name="msg" placeholder="Cuéntanos el trabajo, el tipo de instalación y si es urgente."></textarea></label>
+      <button class="btn btn-volt" type="submit">Enviar por WhatsApp</button>
+      <p class="hint">Se abre WhatsApp con tu mensaje ya escrito. Solo tienes que enviarlo.</p>
+    </form>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ft">
+      <div><img src="assets/logo-algui-amarillo.png" alt="Eléctricas Algui S.L." width="1100" height="622"><p style="margin-top:14px;max-width:34ch">Instalaciones y proyectos eléctricos integrales para empresa e industria en la Comunidad Valenciana.</p></div>
+      <nav><a href="#servicios">Servicios</a><a href="#como-trabajamos">Cómo trabajamos</a><a href="#sectores">Sectores</a><a href="#zona">Zona</a><a href="#preguntas">Preguntas</a><a href="#contacto">Contacto</a></nav>
+    </div>
+    <small>© 2026 Eléctricas Algui S.L. · Aviso legal · Privacidad · Cookies</small>
+  </div>
+</footer>
+
+<div class="mbar" aria-label="Contacto rápido">
+  <a class="btn btn-volt" data-tel href="#">Llamar</a>
+  <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<script>
+/* Datos de contacto: cambiar aquí si Alex da otro número */
+const TEL = "+34654001104";           // llamadas
+const WA  = "34654001104";            // WhatsApp (sin + ni espacios)
+const TEL_FMT = "654 00 11 04";
+
+const RM = matchMedia('(prefers-reduced-motion: reduce)').matches;
+document.documentElement.classList.add('js');
+
+// contact links
+document.querySelectorAll('[data-tel]').forEach(a=>a.href='tel:'+TEL);
+document.querySelectorAll('[data-telfmt]').forEach(el=>{if(el.classList.contains('phone'))el.textContent=TEL_FMT;else if(el.closest('.nav'))el.textContent=TEL_FMT;});
+const waMsg=encodeURIComponent('Hola, os escribo desde la web de Eléctricas Algui. Quería pediros información sobre un trabajo.');
+document.querySelectorAll('[data-wa]').forEach(a=>a.href=`https://wa.me/${WA}?text=${waMsg}`);
+document.querySelectorAll('.band [data-telfmt]').forEach(el=>el.textContent='Llamar al '+TEL_FMT);
+
+// schematic: measure paths for the draw-in
+document.querySelectorAll('.schem .draw').forEach(p=>p.style.setProperty('--len',Math.ceil(p.getTotalLength())+1));
+requestAnimationFrame(()=>requestAnimationFrame(()=>document.documentElement.classList.add('ready')));
+
+// nav turns solid after the hero top
+const nav=document.getElementById('nav');
+const navUpd=()=>nav.classList.toggle('solid',scrollY>40);
+addEventListener('scroll',navUpd,{passive:true});navUpd();
+
+// reveal once
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{rootMargin:'0px 0px -10% 0px'});
+document.querySelectorAll('.rv2').forEach(el=>io.observe(el));
+
+// process rail fills with scroll and lights each step
+const stepsEl=document.getElementById('steps'),rail=document.getElementById('rail'),steps=[...stepsEl.querySelectorAll('.step')];
+function railUpd(){
+  const r=stepsEl.getBoundingClientRect(),mid=innerHeight*.6;
+  const p=Math.max(0,Math.min(1,(mid-r.top)/r.height));
+  rail.style.height=(p*100)+'%';
+  steps.forEach(s=>{const b=s.getBoundingClientRect();s.classList.toggle('on',b.top+18<mid)});
+}
+if(RM){steps.forEach(s=>s.classList.add('on'));rail.style.height='100%'}
+else{addEventListener('scroll',()=>requestAnimationFrame(railUpd),{passive:true});railUpd()}
+
+// FAQ accordion
+document.querySelectorAll('.qa button').forEach(b=>b.addEventListener('click',()=>{
+  const qa=b.parentElement,open=!qa.classList.contains('open');
+  document.querySelectorAll('.qa.open').forEach(o=>{if(o!==qa){o.classList.remove('open');o.querySelector('button').setAttribute('aria-expanded','false')}});
+  qa.classList.toggle('open',open);b.setAttribute('aria-expanded',String(open));
+}));
+
+// quote form -> WhatsApp
+document.getElementById('qform').addEventListener('submit',e=>{
+  e.preventDefault();const f=new FormData(e.target);
+  const t=`Hola, soy ${f.get('nombre')}${f.get('empresa')?' de '+f.get('empresa'):''}.\nTrabajo: ${f.get('tipo')}\nLocalidad: ${f.get('lugar')}\n${f.get('msg')||''}`;
+  window.open(`https://wa.me/${WA}?text=${encodeURIComponent(t)}`,'_blank','noopener');
+});
+</script>
+</body>
+</html>
