@@ -234,6 +234,49 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
   .hero .rv,.js .rv2{opacity:1;transform:none}
   .schem .draw{stroke-dashoffset:0}
 }
+
+/* HALLWAY (3D corridor of reference photos) */
+.hall{position:relative;height:340vh;background:#0b0b0a;color:#fff}
+.hl-sticky{position:sticky;top:0;height:100svh;overflow:hidden;display:flex;align-items:center}
+.hl-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:center;width:100%}
+.hl-copy{position:relative;z-index:2}
+.hl-cap{margin-top:30px;border-top:1px solid var(--lineD);padding-top:18px;min-height:4.4em}
+.hl-cap b{display:block;font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:1.5rem;line-height:1.1;color:var(--volt)}
+.hl-cap span{color:var(--fog)}
+.hl-note{margin-top:10px;font-size:.85rem;color:#77776f}
+.hl-stage{position:relative;height:min(78svh,720px);perspective:900px;perspective-origin:50% 45%;overflow:hidden;border-radius:18px}
+.hl-world{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d}
+.hl-it{position:absolute;left:0;top:0;width:var(--iw,340px);aspect-ratio:3/2;margin:0;border-radius:10px;overflow:hidden;background:#111;will-change:transform,opacity;
+  box-shadow:0 30px 60px rgba(0,0,0,.6)}
+.hl-it img{width:100%;height:100%;object-fit:cover}
+.hl-it::after{content:"";position:absolute;inset:0;background:rgba(11,11,10,var(--dk,0))}
+.hl-bar{position:absolute;left:var(--pad);right:var(--pad);bottom:26px;height:2px;background:var(--lineD)}
+.hl-bar i{display:block;height:100%;background:var(--volt);transform-origin:0 50%;transform:scaleX(0)}
+@media (max-width:860px){.hall{height:300vh}.hl-grid{grid-template-columns:1fr;gap:0}.hl-copy{padding-top:70px}.hl-copy .lead{display:none}.hl-cap{margin-top:14px;min-height:0}.hl-stage{height:52svh}}
+@media (prefers-reduced-motion:reduce){.hall{height:auto}.hl-sticky{position:relative;height:auto;padding:90px 0}.hl-stage{perspective:none;height:auto}.hl-world{position:static;width:auto;height:auto;display:flex;gap:12px;overflow-x:auto;transform:none!important}.hl-it{position:relative;flex:none;width:260px;margin:0!important;transform:none!important;opacity:1!important}}
+/* sector feature photo */
+.sec-feat .bgimg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+.sec-feat .bgshade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,18,16,.55),rgba(18,18,16,.92) 70%)}
+.sec-feat>div{position:relative}
+/* COMMITMENTS (infinite columns) */
+.commit{padding:clamp(80px,10vw,140px) 0}
+.cm-head{text-align:center;display:flex;flex-direction:column;align-items:center;margin-bottom:44px}
+.cm-head .h2{max-width:20ch}
+.cm-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;height:640px;overflow:hidden;
+  -webkit-mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent);mask-image:linear-gradient(transparent,#000 14%,#000 86%,transparent)}
+.cm-track{display:grid;gap:16px;animation:cmUp var(--d,38s) linear infinite}
+.cm-dup{display:grid;gap:16px}
+.c1 .cm-track{animation-direction:reverse;--d:44s}.c2 .cm-track{--d:34s}
+.cm-cols:hover .cm-track{animation-play-state:paused}
+@keyframes cmUp{to{transform:translateY(calc(-50% - 8px))}}
+.cm-card{background:var(--white);border-radius:20px;padding:26px 24px 28px;box-shadow:0 1px 0 rgba(18,18,16,.06);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s}
+.cm-card:hover{transform:translateY(-3px);box-shadow:0 18px 40px rgba(18,18,16,.12)}
+.cm-card svg{width:30px;height:30px;padding:6px;border-radius:9px;background:var(--volt);fill:var(--ink);margin-bottom:18px}
+.cm-card h3{font-family:var(--disp);font-stretch:115%;font-weight:800;font-size:1.2rem;line-height:1.15}
+.cm-card p{color:var(--steel);margin-top:8px}
+@media (max-width:980px){.cm-cols{grid-template-columns:1fr 1fr}.c2{display:none}}
+@media (max-width:600px){.cm-cols{grid-template-columns:1fr;height:520px}.c1{display:none}}
+@media (prefers-reduced-motion:reduce){.cm-track{animation:none}.cm-cols{height:auto;-webkit-mask-image:none;mask-image:none}.cm-dup{display:none}.c1,.c2{display:block}}
 </style>
 </head>
 <body>
@@ -244,6 +287,7 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
     <ul>
       <li><a href="#servicios">Servicios</a></li>
       <li><a href="#como-trabajamos">Cómo trabajamos</a></li>
+      <li><a href="#trabajos">Trabajos</a></li>
       <li><a href="#sectores">Sectores</a></li>
       <li><a href="#zona">Zona</a></li>
       <li><a href="#preguntas">Preguntas</a></li>
@@ -385,6 +429,38 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
   </div>
 </section>
 
+<!-- HALLWAY -->
+<section class="hall" id="trabajos">
+  <div class="hl-sticky">
+    <div class="wrap hl-grid">
+      <div class="hl-copy">
+        <p class="tag">Trabajos</p>
+        <h2 class="h2">Instalaciones como estas.</h2>
+        <p class="lead">Cuadros, naves, líneas de producción, iluminación y locales. Baja con la rueda y recorre el tipo de trabajos que hacemos.</p>
+        <p class="hl-cap" aria-live="polite"><b id="hlt">Revisión de cuadros</b><span id="hls">Mantenimiento industrial</span></p>
+        <p class="hl-note">Imágenes de referencia.</p>
+      </div>
+      <div class="hl-stage" id="hlstage" aria-hidden="true">
+        <div class="hl-world" id="hlworld">
+        <figure class="hl-it" data-t="Revisión de cuadros" data-s="Mantenimiento industrial"><img src="https://images.unsplash.com/photo-1615774925655-a0e97fc85c14?w=900&q=75&auto=format&fit=crop" alt="Revisión de cuadros" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Iluminación LED en nave" data-s="Logística y almacenes"><img src="https://images.unsplash.com/photo-1771531072574-af6ed6b954c0?w=900&q=75&auto=format&fit=crop" alt="Iluminación LED en nave" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Conexionado y pruebas" data-s="Reparaciones"><img src="https://images.unsplash.com/photo-1758101755915-462eddc23f57?w=900&q=75&auto=format&fit=crop" alt="Conexionado y pruebas" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Líneas de producción" data-s="Industria"><img src="https://images.unsplash.com/photo-1647427060118-4911c9821b82?w=900&q=75&auto=format&fit=crop" alt="Líneas de producción" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Iluminación decorativa" data-s="Locales y hostelería"><img src="https://images.unsplash.com/photo-1552960226-639240203497?w=900&q=75&auto=format&fit=crop" alt="Iluminación decorativa" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Cuadros de distribución" data-s="Proyectos eléctricos"><img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=900&q=75&auto=format&fit=crop" alt="Cuadros de distribución" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Instalación en fábrica" data-s="Industria"><img src="https://images.unsplash.com/photo-1716191300020-b52dec5b70a8?w=900&q=75&auto=format&fit=crop" alt="Instalación en fábrica" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Iluminación industrial" data-s="Naves"><img src="https://images.unsplash.com/photo-1762120514622-d57c902f2fe6?w=900&q=75&auto=format&fit=crop" alt="Iluminación industrial" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Mantenimiento preventivo" data-s="Revisiones periódicas"><img src="https://images.unsplash.com/photo-1660330589693-99889d60181e?w=900&q=75&auto=format&fit=crop" alt="Mantenimiento preventivo" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Reforma integral de local" data-s="Comercios"><img src="https://images.unsplash.com/photo-1709548145082-04d0cde481d4?w=900&q=75&auto=format&fit=crop" alt="Reforma integral de local" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Averías y reparaciones" data-s="Respuesta rápida"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=75&auto=format&fit=crop" alt="Averías y reparaciones" loading="lazy" decoding="async"></figure>
+        <figure class="hl-it" data-t="Naves nuevas" data-s="Instalación completa"><img src="https://images.unsplash.com/photo-1772305336606-989a457ffbae?w=900&q=75&auto=format&fit=crop" alt="Naves nuevas" loading="lazy" decoding="async"></figure>
+        </div>
+      </div>
+    </div>
+    <div class="hl-bar" aria-hidden="true"><i id="hlbar"></i></div>
+  </div>
+</section>
+
 <!-- PROCESS -->
 <section class="process dark" id="como-trabajamos">
   <div class="wrap pr-grid">
@@ -410,7 +486,7 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
     <div class="rv2"><p class="tag">Sectores</p><h2 class="h2">Instalaciones que no se pueden permitir parar.</h2></div>
     <div class="sec-grid">
       <article class="sec-feat rv2">
-        <svg class="bg" viewBox="0 0 400 260" aria-hidden="true"><g fill="none" stroke="rgba(255,210,0,.55)" stroke-width="2"><path d="M10 250V120l80-50v50l80-50v50l80-50v50l80-50v180z"/><path d="M40 250v-60h60v60M150 250v-60h60v60M260 250v-60h60v60" stroke="rgba(255,255,255,.25)"/><path d="M330 70V20h30v80"/></g></svg>
+        <img class="bgimg" src="https://images.unsplash.com/photo-1716191300020-b52dec5b70a8?w=1200&q=75&auto=format&fit=crop" alt="" loading="lazy"><span class="bgshade" aria-hidden="true"></span>
         <div><p class="k">Sector principal</p><h3>Industria y naves</h3><p>Maquinaria, cuadros de distribución, líneas de fuerza e iluminación de nave. Reparamos, mantenemos y renovamos sin frenar tu actividad más de lo necesario.</p></div>
         <div style="position:relative;margin-top:24px"><a class="btn btn-volt" href="#contacto">Pedir presupuesto</a></div>
       </article>
@@ -454,6 +530,14 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
       <a class="btn btn-ink" data-tel href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 01-2.2 2 19.8 19.8 0 01-8.6-3.1 19.5 19.5 0 01-6-6A19.8 19.8 0 012.1 4.2 2 2 0 014.1 2h3a2 2 0 012 1.7c.1.9.4 1.8.7 2.7a2 2 0 01-.5 2.1L8 9.8a16 16 0 006 6l1.3-1.3a2 2 0 012.1-.4c.9.3 1.8.6 2.7.7a2 2 0 011.7 2z"/></svg><span data-telfmt>Llamar</span></a>
       <a class="btn btn-wa" data-wa href="#" target="_blank" rel="noopener">Enviar foto por WhatsApp</a>
     </div>
+  </div>
+</section>
+
+<!-- COMMITMENTS -->
+<section class="commit paperbg" id="compromiso">
+  <div class="wrap">
+    <div class="cm-head rv2"><p class="tag">Nuestro compromiso</p><h2 class="h2">Por qué nos llaman las empresas.</h2></div>
+    <div class="cm-cols"><div class="cm-col c0"><div class="cm-track"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Presupuesto por escrito</h3><p>Sabes qué incluye y cuánto cuesta antes de empezar.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Una sola persona de contacto</h3><p>Hablas siempre con alguien que conoce tu instalación.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Trato directo por WhatsApp</h3><p>Mándanos una foto de la avería y te decimos cómo lo vemos.</p></article><div class="cm-dup" aria-hidden="true"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Presupuesto por escrito</h3><p>Sabes qué incluye y cuánto cuesta antes de empezar.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Una sola persona de contacto</h3><p>Hablas siempre con alguien que conoce tu instalación.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Trato directo por WhatsApp</h3><p>Mándanos una foto de la avería y te decimos cómo lo vemos.</p></article></div></div></div><div class="cm-col c1"><div class="cm-track"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Paramos lo mínimo</h3><p>Planificamos el trabajo para que tu actividad siga en marcha.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Equipo propio</h3><p>La parte eléctrica la hacemos nosotros, de principio a fin.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Documentación en regla</h3><p>Boletines y legalizaciones cuando hacen falta, sin que te preocupes.</p></article><div class="cm-dup" aria-hidden="true"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Paramos lo mínimo</h3><p>Planificamos el trabajo para que tu actividad siga en marcha.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Equipo propio</h3><p>La parte eléctrica la hacemos nosotros, de principio a fin.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Documentación en regla</h3><p>Boletines y legalizaciones cuando hacen falta, sin que te preocupes.</p></article></div></div></div><div class="cm-col c2"><div class="cm-track"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>LED que se nota en la factura</h3><p>Planteamos la iluminación para gastar menos y ver mejor.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Comunidad Valenciana y más</h3><p>Castellón, Valencia y Alicante, y fuera si el proyecto lo merece.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Solo empresa e industria</h3><p>Centrados en lo que mejor hacemos, sin dispersarnos.</p></article><div class="cm-dup" aria-hidden="true"><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>LED que se nota en la factura</h3><p>Planteamos la iluminación para gastar menos y ver mejor.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Comunidad Valenciana y más</h3><p>Castellón, Valencia y Alicante, y fuera si el proyecto lo merece.</p></article><article class="cm-card"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7z"/></svg><h3>Solo empresa e industria</h3><p>Centrados en lo que mejor hacemos, sin dispersarnos.</p></article></div></div></div></div>
   </div>
 </section>
 
@@ -572,6 +656,32 @@ document.getElementById('qform').addEventListener('submit',e=>{
   const t=`Hola, soy ${f.get('nombre')}${f.get('empresa')?' de '+f.get('empresa'):''}.\nTrabajo: ${f.get('tipo')}\nLocalidad: ${f.get('lugar')}\n${f.get('msg')||''}`;
   window.open(`https://wa.me/${WA}?text=${encodeURIComponent(t)}`,'_blank','noopener');
 });
+
+// HALLWAY: scroll moves the camera down a corridor of photos
+(()=>{
+  const sec=document.querySelector('.hall'),world=document.getElementById('hlworld'),stage=document.getElementById('hlstage'),
+        its=[...world.children],T=document.getElementById('hlt'),S=document.getElementById('hls'),bar=document.getElementById('hlbar');
+  if(RM)return;
+  const N=its.length,GAP=520;let cur=-1;
+  function frame(){
+    const r=sec.getBoundingClientRect(),span=r.height-innerHeight,p=Math.max(0,Math.min(1,-r.top/(span||1)));
+    const W=stage.clientWidth,H=stage.clientHeight,iw=Math.min(340,W*.5);world.style.setProperty('--iw',iw+'px');
+    const travel=p*(N-1)*GAP;let best=1e9,bi=0;
+    its.forEach((el,i)=>{
+      const z=-i*GAP+travel,side=i%2?1:-1,wall=W*.5;
+      const x=side*wall*.5,y=(i%3-1)*H*.08;
+      const rot=-side*58;
+      el.style.transform=`translate(-50%,-50%) translate3d(${x}px,${y}px,${z}px) rotateY(${rot}deg)`;
+      const o=z>520?0:z>260?1-(z-260)/260:z<-3600?0:z<-2600?1-(-2600-z)/1000:1;
+      el.style.opacity=o.toFixed(3);el.style.setProperty('--dk',Math.min(.75,Math.max(0,-z/4200)).toFixed(2));
+      const d=Math.abs(z-60);if(d<best){best=d;bi=i}
+    });
+    if(bi!==cur){cur=bi;T.textContent=its[bi].dataset.t;S.textContent=its[bi].dataset.s}
+    bar.style.transform=`scaleX(${p})`;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
 </script>
 </body>
 </html>
