@@ -412,6 +412,40 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
 .dk-card h3{font-family:var(--disp);font-stretch:122%;font-weight:900;font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1;letter-spacing:-.02em;max-width:12ch}
 .dk-card p{margin-top:14px;font-size:1.1rem;max-width:30ch;opacity:.85}
 @media (max-width:860px){.cm2-grid{grid-template-columns:1fr}.deck{order:2}}
+
+/* SERVICES v3: full-slide carousel */
+.sx-head{align-items:flex-end}
+.sx-nav{display:flex;gap:10px}
+.sx-arrow{width:58px;height:58px;border-radius:50%;border:0;cursor:pointer;background:var(--ink);color:#fff;display:grid;place-items:center;transition:transform .1s ease-out,background .2s}
+.sx-arrow:hover{background:#2a2a26}.sx-arrow:active{transform:scale(.93)}
+.sx-arrow svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:2.2}
+.sx-arrow[disabled]{opacity:.3;cursor:default}
+.sx-vp{overflow:hidden;cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none;outline:none;padding:6px 0 10px}
+.sx-vp:active{cursor:grabbing}
+.sx-vp:focus-visible .sl.cur{box-shadow:0 0 0 3px var(--ink)}
+.sx-track{display:flex;gap:18px;padding-left:max(var(--pad),calc((100vw - var(--max))/2 + var(--pad)));will-change:transform}
+.sl{flex:none;width:min(1080px,84vw);display:grid;grid-template-columns:1.15fr .85fr;min-height:clamp(420px,46vw,540px);background:var(--ink);color:#fff;border-radius:28px;overflow:hidden;
+  box-shadow:0 30px 70px rgba(18,18,16,.25);transform:scale(var(--sc,1));transform-origin:50% 50%;opacity:var(--op,1);transition:box-shadow .3s}
+.sl-img{position:relative;overflow:hidden}
+.sl-img img{position:absolute;inset:0;width:118%;max-width:none;height:100%;object-fit:cover;left:-9%;transform:translateX(var(--px,0));pointer-events:none}
+.sl-body{display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(24px,3.4vw,44px)}
+.sl-n{font:800 .95rem/1 var(--disp);color:var(--volt);margin-bottom:auto}
+.sl-body h3{font-family:var(--disp);font-stretch:122%;font-weight:900;font-size:clamp(1.8rem,3.2vw,2.8rem);line-height:1;letter-spacing:-.02em;margin-top:24px}
+.sl-body p{color:#d0d0c8;margin-top:14px}
+.sl-body ul{list-style:none;display:grid;gap:8px;margin:20px 0 26px}
+.sl-body li{display:flex;gap:10px;align-items:center;font-weight:600}
+.sl-body li::before{content:"";width:8px;height:8px;border-radius:2px;background:var(--volt);flex:none}
+.sl-body .btn{align-self:flex-start}
+.sx-foot{display:flex;justify-content:space-between;align-items:center;gap:20px;margin-top:22px;flex-wrap:wrap}
+.sx-segs{display:flex;gap:8px;flex:1;max-width:520px}
+.sg{flex:1;height:22px;border:0;background:none;cursor:pointer;padding:0;display:flex;align-items:center}
+.sg i{display:block;width:100%;height:4px;border-radius:4px;background:rgba(18,18,16,.2);overflow:hidden;position:relative}
+.sg i::after{content:"";position:absolute;inset:0;background:var(--ink);transform:scaleX(var(--f,0));transform-origin:0 50%}
+.sx-hint{display:flex;align-items:center;gap:10px;font-weight:600;color:#3b3a2c}
+.sx-hint svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;animation:nudge 1.6s ease-in-out infinite}
+@keyframes nudge{50%{transform:translateX(5px)}}
+@media (max-width:860px){.sl{grid-template-columns:1fr;grid-template-rows:240px auto;width:86vw}.sx-nav{display:none}.sx-hint{width:100%}}
+@media (prefers-reduced-motion:reduce){.sx-hint svg{animation:none}}
 </style>
 </head>
 <body>
@@ -497,30 +531,36 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
   <div class="wrap">
     <div class="sx-head rv2">
       <div><p class="tag">Servicios</p><h2 class="h2">Un mismo equipo para toda la parte eléctrica.</h2></div>
-      <p class="lead">De la avería que para una línea de producción al proyecto completo de una nave. Toca cada servicio para verlo.</p>
+      <div class="sx-nav">
+        <button class="sx-arrow" type="button" data-dir="-1" aria-label="Servicio anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="sx-arrow" type="button" data-dir="1" aria-label="Servicio siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
     </div>
-    <div class="sx-box rv2">
-      <div class="sx-tabs" role="tablist" aria-label="Servicios"><button type="button" role="tab" class="sx-tab on" aria-selected="true" data-i="0"><span class="n">01</span><span class="t">Reparaciones industriales</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="1"><span class="n">02</span><span class="t">Mantenimiento industrial</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="2"><span class="n">03</span><span class="t">Reformas integrales</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="3"><span class="n">04</span><span class="t">Iluminación LED</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="4"><span class="n">05</span><span class="t">Iluminación decorativa</span><span class="pb"><i></i></span></button><button type="button" role="tab" class="sx-tab" aria-selected="false" data-i="5"><span class="n">06</span><span class="t">Boletines y proyectos</span><span class="pb"><i></i></span></button></div>
-      <div class="sx-panels"><article class="sx-panel on" data-i="0" role="tabpanel" >
-          <div class="sx-img"><img src="https://images.unsplash.com/photo-1758101755915-462eddc23f57?w=1000&q=75&auto=format&fit=crop" alt="Reparaciones industriales" loading="lazy"></div>
-          <div class="sx-body"><h3>Reparaciones industriales</h3><p>Averías en maquinaria, cuadros y líneas de fábricas y naves. Localizamos el fallo y lo dejamos funcionando cuanto antes.</p><ul><li>Diagnóstico de averías en maquinaria y cuadros</li><li>Reparación de líneas de fuerza y control</li><li>Prioridad: que la producción vuelva a arrancar</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
-        </article><article class="sx-panel" data-i="1" role="tabpanel" hidden>
-          <div class="sx-img"><img src="https://images.unsplash.com/photo-1660330589693-99889d60181e?w=1000&q=75&auto=format&fit=crop" alt="Mantenimiento industrial" loading="lazy"></div>
-          <div class="sx-body"><h3>Mantenimiento industrial</h3><p>Revisiones periódicas y mantenimiento preventivo y correctivo para que la instalación no te dé sustos.</p><ul><li>Revisiones con la frecuencia que necesites</li><li>Mantenimiento preventivo y correctivo</li><li>Te contamos qué hemos revisado y qué conviene cambiar</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
-        </article><article class="sx-panel" data-i="2" role="tabpanel" hidden>
-          <div class="sx-img"><img src="https://images.unsplash.com/photo-1709548145082-04d0cde481d4?w=1000&q=75&auto=format&fit=crop" alt="Reformas integrales" loading="lazy"></div>
-          <div class="sx-body"><h3>Reformas integrales</h3><p>Toda la instalación eléctrica nueva o renovada en naves, locales comerciales y oficinas.</p><ul><li>Instalación eléctrica completa</li><li>Naves, locales y oficinas</li><li>Nos adaptamos a los plazos de la obra</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
-        </article><article class="sx-panel" data-i="3" role="tabpanel" hidden>
-          <div class="sx-img"><img src="https://images.unsplash.com/photo-1771531072574-af6ed6b954c0?w=1000&q=75&auto=format&fit=crop" alt="Iluminación LED" loading="lazy"></div>
-          <div class="sx-body"><h3>Iluminación LED</h3><p>Cambio a LED en naves y espacios de trabajo: más luz, menos consumo y menos mantenimiento.</p><ul><li>Estudio de la iluminación que tienes</li><li>LED en naves, almacenes y talleres</li><li>Menos consumo en la factura</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
-        </article><article class="sx-panel" data-i="4" role="tabpanel" hidden>
-          <div class="sx-img"><img src="https://images.unsplash.com/photo-1552960226-639240203497?w=1000&q=75&auto=format&fit=crop" alt="Iluminación decorativa" loading="lazy"></div>
-          <div class="sx-body"><h3>Iluminación decorativa</h3><p>Diseño e instalación de iluminación para locales, fachadas y espacios que tienen que lucir.</p><ul><li>Locales, hostelería y fachadas</li><li>La luz pensada con el espacio</li><li>Instalación y regulación</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
-        </article><article class="sx-panel" data-i="5" role="tabpanel" hidden>
-          <div class="sx-img"><img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=1000&q=75&auto=format&fit=crop" alt="Boletines y proyectos" loading="lazy"></div>
-          <div class="sx-body"><h3>Boletines y proyectos</h3><p>Boletines, legalizaciones y proyectos técnicos para dar de alta, ampliar o regularizar tu instalación.</p><ul><li>Boletines eléctricos</li><li>Legalizaciones y ampliaciones de potencia</li><li>Proyectos técnicos</li></ul><a class="btn btn-ink" href="#contacto">Pedir presupuesto</a></div>
+  </div>
+  <div class="sx-vp" id="sxvp" tabindex="0" role="region" aria-roledescription="carrusel" aria-label="Servicios. Desliza o usa las flechas.">
+    <div class="sx-track" id="sxtrack"><article class="sl" data-i="0" aria-roledescription="diapositiva" aria-label="1 de 6: Reparaciones industriales">
+          <div class="sl-img"><img src="https://images.unsplash.com/photo-1758101755915-462eddc23f57?w=1100&q=75&auto=format&fit=crop" alt="Reparaciones industriales" loading="lazy" draggable="false"></div>
+          <div class="sl-body"><span class="sl-n">01 / 06</span><h3>Reparaciones industriales</h3><p>Averías en maquinaria, cuadros y líneas de fábricas y naves. Localizamos el fallo y lo dejamos funcionando cuanto antes.</p><ul><li>Diagnóstico de averías</li><li>Líneas de fuerza y control</li><li>Que la producción vuelva a arrancar</li></ul><a class="btn btn-volt" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sl" data-i="1" aria-roledescription="diapositiva" aria-label="2 de 6: Mantenimiento industrial">
+          <div class="sl-img"><img src="https://images.unsplash.com/photo-1660330589693-99889d60181e?w=1100&q=75&auto=format&fit=crop" alt="Mantenimiento industrial" loading="lazy" draggable="false"></div>
+          <div class="sl-body"><span class="sl-n">02 / 06</span><h3>Mantenimiento industrial</h3><p>Revisiones periódicas y mantenimiento preventivo y correctivo para que la instalación no te dé sustos.</p><ul><li>Revisiones periódicas</li><li>Preventivo y correctivo</li><li>Te contamos qué conviene cambiar</li></ul><a class="btn btn-volt" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sl" data-i="2" aria-roledescription="diapositiva" aria-label="3 de 6: Reformas integrales">
+          <div class="sl-img"><img src="https://images.unsplash.com/photo-1709548145082-04d0cde481d4?w=1100&q=75&auto=format&fit=crop" alt="Reformas integrales" loading="lazy" draggable="false"></div>
+          <div class="sl-body"><span class="sl-n">03 / 06</span><h3>Reformas integrales</h3><p>Toda la instalación eléctrica nueva o renovada en naves, locales comerciales y oficinas.</p><ul><li>Instalación completa</li><li>Naves, locales y oficinas</li><li>Nos adaptamos a los plazos de la obra</li></ul><a class="btn btn-volt" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sl" data-i="3" aria-roledescription="diapositiva" aria-label="4 de 6: Iluminación LED">
+          <div class="sl-img"><img src="https://images.unsplash.com/photo-1771531072574-af6ed6b954c0?w=1100&q=75&auto=format&fit=crop" alt="Iluminación LED" loading="lazy" draggable="false"></div>
+          <div class="sl-body"><span class="sl-n">04 / 06</span><h3>Iluminación LED</h3><p>Cambio a LED en naves y espacios de trabajo: más luz, menos consumo y menos mantenimiento.</p><ul><li>Estudio de tu iluminación</li><li>Naves, almacenes y talleres</li><li>Menos consumo en la factura</li></ul><a class="btn btn-volt" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sl" data-i="4" aria-roledescription="diapositiva" aria-label="5 de 6: Iluminación decorativa">
+          <div class="sl-img"><img src="https://images.unsplash.com/photo-1552960226-639240203497?w=1100&q=75&auto=format&fit=crop" alt="Iluminación decorativa" loading="lazy" draggable="false"></div>
+          <div class="sl-body"><span class="sl-n">05 / 06</span><h3>Iluminación decorativa</h3><p>Diseño e instalación de iluminación para locales, fachadas y espacios que tienen que lucir.</p><ul><li>Locales y hostelería</li><li>Fachadas</li><li>Instalación y regulación</li></ul><a class="btn btn-volt" href="#contacto">Pedir presupuesto</a></div>
+        </article><article class="sl" data-i="5" aria-roledescription="diapositiva" aria-label="6 de 6: Boletines y proyectos">
+          <div class="sl-img"><img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=1100&q=75&auto=format&fit=crop" alt="Boletines y proyectos" loading="lazy" draggable="false"></div>
+          <div class="sl-body"><span class="sl-n">06 / 06</span><h3>Boletines y proyectos</h3><p>Boletines, legalizaciones y proyectos técnicos para dar de alta, ampliar o regularizar tu instalación.</p><ul><li>Boletines eléctricos</li><li>Legalizaciones y potencia</li><li>Proyectos técnicos</li></ul><a class="btn btn-volt" href="#contacto">Pedir presupuesto</a></div>
         </article></div>
-    </div>
+  </div>
+  <div class="wrap sx-foot">
+    <div class="sx-segs" id="sxsegs"><button type="button" class="sg" data-i="0" aria-label="Ver Reparaciones industriales"><i></i></button><button type="button" class="sg" data-i="1" aria-label="Ver Mantenimiento industrial"><i></i></button><button type="button" class="sg" data-i="2" aria-label="Ver Reformas integrales"><i></i></button><button type="button" class="sg" data-i="3" aria-label="Ver Iluminación LED"><i></i></button><button type="button" class="sg" data-i="4" aria-label="Ver Iluminación decorativa"><i></i></button><button type="button" class="sg" data-i="5" aria-label="Ver Boletines y proyectos"><i></i></button></div>
+    <p class="sx-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 12h12M16 8l4 4-4 4M4 8v8"/></svg>Desliza para ver los 6 servicios</p>
   </div>
 </section>
 
@@ -822,23 +862,7 @@ document.getElementById('qform').addEventListener('submit',e=>{
   requestAnimationFrame(frame);
 })();
 
-// SERVICES: tabs with auto-advance progress
-(()=>{const tabs=[...document.querySelectorAll('.sx-tab')],panels=[...document.querySelectorAll('.sx-panel')],box=document.querySelector('.sx-box');
-  let cur=0,timer=0,bar=null,inView=false,hover=false;const DUR=6000;
-  function show(i,user){cur=(i+tabs.length)%tabs.length;
-    tabs.forEach((t,k)=>{const on=k===cur;t.classList.toggle('on',on);t.setAttribute('aria-selected',String(on))});
-    panels.forEach((p,k)=>{const on=k===cur;p.hidden=!on;requestAnimationFrame(()=>p.classList.toggle('on',on))});
-    if(user&&tabs[cur].scrollIntoView&&innerWidth<900)tabs[cur].scrollIntoView({inline:'nearest',block:'nearest',behavior:RM?'auto':'smooth'});
-    run()}
-  function run(){clearTimeout(timer);if(bar)bar.cancel();if(RM||!inView||hover)return;
-    bar=tabs[cur].querySelector('.pb i').animate([{transform:'scaleX(0)'},{transform:'scaleX(1)'}],{duration:DUR,easing:'linear',fill:'forwards'});
-    timer=setTimeout(()=>show(cur+1),DUR)}
-  tabs.forEach(t=>t.addEventListener('click',()=>show(+t.dataset.i,true)));
-  document.querySelector('.sx-tabs').addEventListener('keydown',e=>{if(e.key==='ArrowDown'||e.key==='ArrowRight'){e.preventDefault();show(cur+1,true);tabs[cur].focus()}if(e.key==='ArrowUp'||e.key==='ArrowLeft'){e.preventDefault();show(cur-1,true);tabs[cur].focus()}});
-  box.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;run()}});box.addEventListener('pointerleave',()=>{hover=false;run()});
-  new IntersectionObserver(es=>es.forEach(e=>{inView=e.isIntersecting;run()}),{threshold:.35}).observe(box);
-  show(0);
-})();
+
 
 // PROCESS: a signal travels the path from step to step
 (()=>{const sp=document.getElementById('sp'),svg=document.getElementById('spsvg'),steps=[...sp.querySelectorAll('.sp-step')],nodes=steps.map(s=>s.querySelector('.sp-node'));
@@ -908,6 +932,40 @@ document.getElementById('qform').addEventListener('submit',e=>{
   deck.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;restart()}});deck.addEventListener('pointerleave',()=>{hover=false;restart()});
   new IntersectionObserver(es=>es.forEach(e=>{inView=e.isIntersecting;restart()}),{threshold:.4}).observe(deck);
   layout(false);
+})();
+
+// SERVICES: whole-slide carousel (drag, flick, arrows, auto-advance)
+(()=>{const vp=document.getElementById('sxvp'),track=document.getElementById('sxtrack'),sl=[...track.children],segs=[...document.querySelectorAll('.sg')],arrows=[...document.querySelectorAll('.sx-arrow')];
+  const N=sl.length,clamp=(v,a,b)=>Math.max(a,Math.min(b,v));let step=0,pos=0,cur=0,auto=0,inView=false,hover=false,x=0,v=0,target=0,raf=0,last=0;
+  const k=(2*Math.PI/.5)**2,c=2*Math.sqrt(k);
+  function measure(){step=sl[0].getBoundingClientRect().width+18}
+  function render(){pos=-x/step;track.style.transform=`translateX(${x}px)`;
+    sl.forEach((el,i)=>{const d=i-pos,a=Math.abs(d);el.style.setProperty('--sc',(1-Math.min(a,1)*.06).toFixed(3));el.style.setProperty('--op',(1-Math.min(a,1)*.35).toFixed(3));
+      el.style.setProperty('--px',(-d*6).toFixed(2)+'%');el.classList.toggle('cur',a<.5)});
+    segs.forEach((s,i)=>{const f=clamp(pos-i+1,0,1);s.firstElementChild.style.setProperty('--f',i<=Math.round(pos)?1:f)});
+    const r=clamp(Math.round(pos),0,N-1);if(r!==cur){cur=r}
+    arrows[0].disabled=cur===0;arrows[1].disabled=cur===N-1}
+  function tick(now){const dt=Math.min(.032,(now-last)/1000);last=now;const a=-k*(x-target)-c*v;v+=a*dt;x+=v*dt;render();
+    if(Math.abs(x-target)<.3&&Math.abs(v)<.3){x=target;v=0;render();raf=0;return}raf=requestAnimationFrame(tick)}
+  function go(i,vel){cur=clamp(i,0,N-1);target=-cur*step;if(vel!==undefined)v=vel;if(RM){x=target;render();return}if(!raf){last=performance.now();raf=requestAnimationFrame(tick)}restart()}
+  function restart(){clearTimeout(auto);if(RM||!inView||hover||dragging)return;auto=setTimeout(()=>go(cur+1<N?cur+1:0),6000)}
+  arrows.forEach(b=>b.addEventListener('click',()=>go(cur+ +b.dataset.dir)));
+  segs.forEach(s=>s.addEventListener('click',()=>go(+s.dataset.i)));
+  vp.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(cur+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(cur-1)}});
+  let dragging=false,moved=false,sx=0,x0=0,hist=[];
+  vp.addEventListener('pointerdown',e=>{if(e.button||e.target.closest('a,button'))return;dragging=true;moved=false;sx=e.clientX;x0=x;hist=[[e.clientX,e.timeStamp]];cancelAnimationFrame(raf);raf=0;v=0;clearTimeout(auto)});
+  vp.addEventListener('pointermove',e=>{if(!dragging)return;const dx=e.clientX-sx;if(!moved&&Math.abs(dx)>6){moved=true;vp.setPointerCapture(e.pointerId)}if(!moved)return;
+    hist.push([e.clientX,e.timeStamp]);if(hist.length>6)hist.shift();let nx=x0+dx;const min=-(N-1)*step;
+    if(nx>0)nx=nx*.35;else if(nx<min)nx=min+(nx-min)*.35;x=nx;render()});
+  const end=()=>{if(!dragging)return;dragging=false;if(!moved){restart();return}
+    const a=hist[0],b=hist[hist.length-1],vx=(b[0]-a[0])/Math.max(1,b[1]-a[1])*1000;
+    const proj=x+(vx/1000)*.998/(1-.998)*.35;go(Math.round(-proj/step),vx)};
+  vp.addEventListener('pointerup',end);vp.addEventListener('pointercancel',end);
+  vp.addEventListener('click',e=>{if(moved){e.preventDefault();e.stopPropagation()}},true);
+  vp.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'){hover=true;clearTimeout(auto)}});vp.addEventListener('pointerleave',()=>{hover=false;restart()});
+  new IntersectionObserver(es=>es.forEach(e=>{inView=e.isIntersecting;restart()}),{threshold:.35}).observe(vp);
+  addEventListener('resize',()=>{measure();target=-cur*step;x=target;render()});
+  measure();render();
 })();
 </script>
 </body>
