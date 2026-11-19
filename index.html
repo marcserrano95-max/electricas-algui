@@ -278,34 +278,40 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
 @media (max-width:600px){.cm-cols{grid-template-columns:1fr;height:520px}.c1{display:none}}
 @media (prefers-reduced-motion:reduce){.cm-track{animation:none}.cm-cols{height:auto;-webkit-mask-image:none;mask-image:none}.cm-dup{display:none}.c1,.c2{display:block}}
 
-/* FIT v2: breaker switch */
-.fit2{padding:clamp(70px,9vw,120px) 0}
-.fit2-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(30px,5vw,80px);align-items:center}
-.fit2-card{background:var(--ink);color:#fff;border-radius:26px;padding:clamp(20px,3vw,34px);box-shadow:0 30px 70px rgba(18,18,16,.18)}
-.brk{position:relative;display:grid;grid-template-columns:1fr 1fr;background:#0b0b0a;border-radius:16px;padding:6px;box-shadow:inset 0 2px 6px rgba(0,0,0,.6),inset 0 0 0 1px rgba(255,255,255,.06)}
-.brk button{position:relative;z-index:1;border:0;background:none;cursor:pointer;padding:16px 12px;font:700 1rem/1.1 var(--body);color:#8d8d86;border-radius:12px;transition:color .3s}
-.brk button[aria-checked="true"]{color:var(--ink)}
-.brk-lever{position:absolute;top:6px;bottom:6px;left:6px;width:calc(50% - 6px);border-radius:12px;background:var(--volt);
-  box-shadow:0 6px 16px rgba(255,210,0,.35),inset 0 -3px 0 rgba(0,0,0,.18);transition:transform .45s cubic-bezier(.34,1.3,.5,1),background .3s}
-.brk.viv .brk-lever{transform:translateX(100%);background:#d8d8d1;box-shadow:inset 0 -3px 0 rgba(0,0,0,.18)}
-.fit2-panels{position:relative;margin-top:26px;min-height:360px}
-.fp-head{display:flex;align-items:center;gap:12px;margin-bottom:18px}
-.fp-head h3{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(1.4rem,2.4vw,2rem);line-height:1.05}
-.led{width:14px;height:14px;border-radius:50%;background:#3a3a35;flex:none;box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
-.led.on{background:var(--volt);box-shadow:0 0 0 4px rgba(255,210,0,.18),0 0 16px rgba(255,210,0,.8)}
-.fp{animation:fpIn .5s cubic-bezier(.16,1,.3,1)}
-@keyframes fpIn{from{opacity:0;transform:translateY(10px)}}
-.fp-tiles{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
-.fp-tiles figure{position:relative;margin:0;border-radius:14px;overflow:hidden;aspect-ratio:16/10;background:#222}
-.fp-tiles img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
-.fp-tiles figure:hover img{transform:scale(1.05)}
-.fp-tiles figure::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.75))}
-.fp-tiles figcaption{position:absolute;left:12px;bottom:10px;right:12px;z-index:1;font-weight:700;font-size:.95rem}
-.fp .btn-ink{background:var(--volt);color:var(--ink)}
-.fp-txt{color:#cfcfc7;font-size:1.1rem;max-width:44ch}
-.fp-txt.small{color:var(--fog);font-size:1rem;margin-top:14px}
-@media (max-width:860px){.fit2-grid{grid-template-columns:1fr}.fit2-panels{min-height:0}}
-@media (max-width:420px){.brk button{font-size:.88rem;padding:14px 8px}}
+/* EQUIPOS ESPECIALIZADOS */
+.eq{padding:clamp(80px,10vw,130px) 0}
+.eq-head{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,80px);align-items:end}
+.eq-head .lead{margin-top:0}
+.eq-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:clamp(36px,5vw,60px);counter-reset:eq}
+.eq-c{position:relative;background:var(--ink);color:#fff;border-radius:22px;padding:26px 24px 24px;display:flex;flex-direction:column;overflow:hidden;transition:transform .5s cubic-bezier(.16,1,.3,1)}
+.eq-c::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:var(--volt);transform:scaleX(.18);transform-origin:left;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.eq-c:hover{transform:translateY(-6px)}
+.eq-c:hover::before{transform:scaleX(1)}
+.eq-n{font:800 .85rem/1 var(--disp);color:var(--volt);letter-spacing:.08em}
+.eq-ic{width:54px;height:54px;border-radius:14px;background:#1f1f1b;display:grid;place-items:center;margin:22px 0 20px}
+.eq-ic svg{width:28px;height:28px;fill:none;stroke:var(--volt);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.eq-c h3{font-family:var(--disp);font-stretch:112%;font-weight:800;font-size:1.35rem;line-height:1.08}
+.eq-c p{color:#bdbdb5;margin-top:10px;font-size:1rem}
+.eq-c ul{list-style:none;margin-top:18px;padding-top:16px;border-top:1px solid #2c2c27;display:grid;gap:9px;font-weight:600;font-size:.95rem}
+.eq-c li{display:flex;gap:10px;align-items:flex-start}
+.eq-c li::before{content:"";width:7px;height:7px;margin-top:.5em;border-radius:2px;background:var(--volt);flex:none}
+.eq-arq{margin-top:14px;display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,4vw,60px);align-items:center;background:var(--volt);border-radius:26px;padding:clamp(26px,4vw,48px)}
+.eq-arq .tag{margin-bottom:12px}
+.eq-arq h3{font-family:var(--disp);font-stretch:118%;font-weight:800;font-size:clamp(1.6rem,3vw,2.4rem);line-height:1.04;letter-spacing:-.02em}
+.eq-arq p.l{color:#3b3a2c;margin-top:12px;font-size:1.08rem;max-width:44ch}
+.eq-steps{display:grid;gap:12px}
+.eq-steps div{display:flex;gap:16px;align-items:flex-start;background:rgba(255,255,255,.45);border-radius:16px;padding:16px 18px}
+.eq-steps b{font:800 1.05rem/1.2 var(--disp);font-stretch:110%;display:block}
+.eq-steps span{color:#3b3a2c}
+.eq-steps i{font:800 .8rem/1 var(--disp);font-style:normal;background:var(--ink);color:var(--volt);border-radius:8px;padding:7px 8px;flex:none}
+.eq-arq .btn{margin-top:22px}
+.eq-vals{margin-top:14px;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.eq-vals div{background:#fff;border-radius:18px;padding:20px 22px}
+.eq-vals b{display:block;font:800 1.05rem/1.2 var(--disp);font-stretch:110%}
+.eq-vals span{color:var(--steel);font-size:.97rem;display:block;margin-top:6px}
+@media (max-width:1060px){.eq-grid,.eq-vals{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:860px){.eq-head,.eq-arq{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:560px){.eq-grid,.eq-vals{grid-template-columns:minmax(0,1fr)}.eq-arq .btn{width:100%}}
 /* 3D MEDIA CORRIDOR */
 .corr{position:relative;height:450vh;background:#000;color:#fff}
 .mc-sticky{position:sticky;top:0;height:100svh;overflow:hidden;perspective:1000px;perspective-origin:50% 50%;isolation:isolate}
@@ -528,8 +534,8 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
       <div>
         <p class="tag rv">Instalaciones y proyectos integrales</p>
         <h1 class="disp rv">Empresa de instalaciones eléctricas con <em>más de 25 años</em> de experiencia.</h1>
-        <p class="sub rv">Especializada en instalaciones y mantenimientos industriales, instalaciones integrales de viviendas y locales comerciales, diseño y decoración de iluminación, proyectos eléctricos y boletines.</p>
-                <p class="note rv">Industria, viviendas y locales en toda la Comunidad Valenciana. <b>No hacemos pequeñas averías domésticas ni trabajamos para reformistas.</b></p>
+        <p class="sub rv">La buena electricidad no se ve: simplemente funciona. Por eso la pensamos con calma, la hacemos con oficio y la dejamos lista para durar.</p>
+                <p class="note rv"><b>Equipos especializados</b> · Estudios de arquitectura · Toda la Comunidad Valenciana</p>
       </div>
       <!-- single-line diagram: supply → panel → loads -->
       <svg class="schem" viewBox="0 0 560 460" role="img" aria-label="Esquema eléctrico: acometida, cuadro general y circuitos de maquinaria, iluminación LED y fuerza">
@@ -615,38 +621,37 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
   </div>
 </section>
 
-<!-- FIT -->
-<section class="fit2 paperbg" id="para-quien">
-  <div class="wrap fit2-grid">
-    <div class="fit2-intro rv2">
-      <p class="tag">¿Es para nosotros?</p>
-      <h2 class="h2">Hacemos casi todo. Casi.</h2>
-      <p class="lead">Industria, viviendas y locales comerciales. Solo hay dos cosas que no hacemos, y preferimos decirlo claro desde el principio. Mueve el interruptor.</p>
+<!-- EQUIPOS -->
+<section class="eq paperbg" id="equipos">
+  <div class="wrap">
+    <div class="eq-head rv2">
+      <div><p class="tag">Especialistas en cada área</p><h2 class="h2">Cuatro equipos. Cada uno, experto en lo suyo.</h2></div>
+      <p class="lead">En Algui cada tipo de trabajo tiene su propio equipo de técnicos, con su experiencia y su forma de trabajar. Tu instalación la hace quien más sabe de ella, y eso se nota en el resultado.</p>
     </div>
-    <div class="fit2-card rv2">
-      <div class="brk" role="radiogroup" aria-label="Tipo de cliente">
-        <button type="button" role="radio" aria-checked="true" data-k="emp">Instalación o proyecto</button>
-        <button type="button" role="radio" aria-checked="false" data-k="viv">Avería o reformista</button>
-        <span class="brk-lever" aria-hidden="true"></span>
+    <div class="eq-grid">
+      <article class="eq-c rv2"><span class="eq-n">01</span><span class="eq-ic"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M13 12l-2.5 4h3L11 20"/></svg></span><h3>Viviendas integrales</h3><p>La instalación eléctrica completa de viviendas y locales comerciales, de principio a fin.</p><ul><li>De la mano de estudios de arquitectura</li><li>Iluminación pensada con el proyecto</li><li>Entrega con boletín y documentación</li></ul></article>
+      <article class="eq-c rv2"><span class="eq-n">02</span><span class="eq-ic"><svg viewBox="0 0 24 24"><path d="M3 21V10l6 4V10l6 4V6h6v15z"/><path d="M7 18h2M12 18h2M17 18h2"/></svg></span><h3>Industria</h3><p>Instalaciones y mantenimiento para naves, fábricas y maquinaria que no se pueden parar.</p><ul><li>Líneas, fuerza y maquinaria</li><li>Mantenimiento preventivo y correctivo</li><li>Respuesta rápida ante paradas</li></ul></article>
+      <article class="eq-c rv2"><span class="eq-n">03</span><span class="eq-ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7v4M12 7v4M15 7v4M8 15h8M8 18h5"/></svg></span><h3>Cuadros eléctricos</h3><p>Montaje, sustitución y adecuación de cuadros, el corazón de cualquier instalación.</p><ul><li>Cuadros generales y de maquinaria</li><li>Protecciones bien dimensionadas</li><li>Cableado ordenado e identificado</li></ul></article>
+      <article class="eq-c rv2"><span class="eq-n">04</span><span class="eq-ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/><path d="M8.5 9.5l1 1 2-2"/></svg></span><h3>Proyectos eléctricos</h3><p>Nuestro departamento técnico prepara la documentación para que todo sea legal y seguro.</p><ul><li>Proyectos y memorias técnicas</li><li>Legalizaciones y aumentos de potencia</li><li>Boletines eléctricos</li></ul></article>
+    </div>
+    <div class="eq-arq rv2">
+      <div>
+        <p class="tag">Para estudios de arquitectura</p>
+        <h3>El equipo eléctrico de confianza de muchos arquitectos.</h3>
+        <p class="l">Trabajamos con muchos estudios de arquitectura, sobre todo en reformas integrales de viviendas. Ellos diseñan el espacio; nosotros hacemos que la electricidad y la luz estén a la altura.</p>
+        <a class="btn btn-ink" href="#contacto">Hablemos de tu proyecto</a>
       </div>
-      <div class="fit2-panels">
-        <div class="fp on" data-p="emp">
-          <div class="fp-head"><span class="led on" aria-hidden="true"></span><h3>Sí, es lo nuestro.</h3></div>
-          <div class="fp-tiles">
-            <figure><img src="https://images.unsplash.com/photo-1647427060118-4911c9821b82?w=600&q=75&auto=format&fit=crop" alt="" loading="lazy"><figcaption>Naves y fábricas</figcaption></figure>
-            <figure><img src="https://images.unsplash.com/photo-1709548145082-04d0cde481d4?w=600&q=75&auto=format&fit=crop" alt="" loading="lazy"><figcaption>Locales y comercios</figcaption></figure>
-            <figure><img src="https://images.unsplash.com/photo-1771531072574-af6ed6b954c0?w=600&q=75&auto=format&fit=crop" alt="" loading="lazy"><figcaption>Diseño de iluminación</figcaption></figure>
-            <figure><img src="https://images.unsplash.com/photo-1544724569-5f546fd6f2b5?w=600&q=75&auto=format&fit=crop" alt="" loading="lazy"><figcaption>Viviendas integrales</figcaption></figure>
-          </div>
-          <p class="fp-txt small" style="margin:0 0 18px">Trabajamos con muchos estudios de arquitectura, sobre todo en reformas integrales de viviendas.</p>
-          <a class="btn btn-ink" href="#contacto">Pedir presupuesto</a>
-        </div>
-        <div class="fp" data-p="viv" hidden>
-          <div class="fp-head"><span class="led" aria-hidden="true"></span><h3>Aquí no somos tu mejor opción.</h3></div>
-          <p class="fp-txt">No hacemos pequeñas averías domésticas ni trabajamos como subcontrata de reformistas. Así cada equipo se dedica a lo que mejor sabe hacer.</p>
-          <p class="fp-txt small">¿La instalación completa de tu vivienda, un local o una nave? Entonces sí: cambia el interruptor.</p>
-        </div>
+      <div class="eq-steps">
+        <div><i>01</i><p><b>Estudiamos el proyecto</b><span>Revisamos los planos y te proponemos la mejor solución técnica.</span></p></div>
+        <div><i>02</i><p><b>Nos coordinamos con la obra</b><span>Con la dirección de obra y el resto de gremios, respetando los plazos.</span></p></div>
+        <div><i>03</i><p><b>Entregamos todo en regla</b><span>Instalación terminada, probada y con su boletín.</span></p></div>
       </div>
+    </div>
+    <div class="eq-vals rv2">
+      <div><b>Más de 25 años</b><span>De oficio y de obras terminadas a tiempo.</span></div>
+      <div><b>Según normativa</b><span>Instalaciones conforme al Reglamento Electrotécnico de Baja Tensión.</span></div>
+      <div><b>Propuesta por escrito</b><span>Qué incluye, cuánto cuesta y cuándo se hace. Sin sorpresas.</span></div>
+      <div><b>Un trabajo que dura</b><span>Hecho para funcionar hoy y dentro de muchos años.</span></div>
     </div>
   </div>
 </section>
@@ -841,7 +846,7 @@ footer{background:#0b0b0a;color:var(--fog);padding:56px 0 110px}
   <div class="wrap">
     <div class="ft">
       <div><img src="assets/logo-algui-amarillo.png" alt="Eléctricas Algui S.L." width="1100" height="622"><p style="margin-top:14px;max-width:34ch">Más de 25 años haciendo instalaciones y proyectos eléctricos para industria, viviendas y locales en la Comunidad Valenciana.</p></div>
-      <nav><a href="#servicios">Servicios</a><a href="#como-trabajamos">Cómo trabajamos</a><a href="#zona">Zona</a><a href="#preguntas">Preguntas</a><a href="#donde-estamos">Dónde estamos</a><a href="#contacto">Contacto</a></nav>
+      <nav><a href="#servicios">Servicios</a><a href="#equipos">Equipos</a><a href="#como-trabajamos">Cómo trabajamos</a><a href="#zona">Zona</a><a href="#preguntas">Preguntas</a><a href="#donde-estamos">Dónde estamos</a><a href="#contacto">Contacto</a></nav>
     </div>
     <small>© 2026 Eléctricas Algui S.L. · Aviso legal · Privacidad · Cookies</small>
   </div>
@@ -899,13 +904,6 @@ document.getElementById('qform').addEventListener('submit',e=>{
 
 
 
-// FIT switch
-(()=>{const brk=document.querySelector('.brk'),btns=[...brk.querySelectorAll('button')],ps=[...document.querySelectorAll('.fp')];
-  function set(k){brk.classList.toggle('viv',k==='viv');btns.forEach(b=>b.setAttribute('aria-checked',String(b.dataset.k===k)));
-    ps.forEach(p=>{const on=p.dataset.p===k;p.hidden=!on;p.classList.toggle('on',on)})}
-  btns.forEach(b=>b.addEventListener('click',()=>set(b.dataset.k)));
-  brk.addEventListener('keydown',e=>{if(e.key==='ArrowRight'||e.key==='ArrowLeft'){e.preventDefault();const k=brk.classList.contains('viv')?'emp':'viv';set(k);btns.find(b=>b.dataset.k===k).focus()}});
-})();
 // 3D MEDIA CORRIDOR: stacked deck opens into two walls of photos as you scroll
 (()=>{
   const sec=document.querySelector('.corr'),st=document.getElementById('mcstage'),cs=[...st.querySelectorAll('.mc')];
